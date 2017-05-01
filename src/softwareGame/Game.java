@@ -130,7 +130,7 @@ public class Game implements InterfaceGame
     */
 	public void initialize(String name){
 	  
-        this.stock = new Stock();
+        this.stock = Stock.getInstance();
         this.table = Table.getInstance();
         this.player1 = new Player(name);
         this.pc = new Player("PC");
