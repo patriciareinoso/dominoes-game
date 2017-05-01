@@ -3,7 +3,7 @@ package softwareGame;
 /**
  * Representation of the pieces on stock of the game.
  * @author	Patricia REINOSO
- * @version 1.0
+ * @version 2.0
  * @since	2017-03-08
  */
 

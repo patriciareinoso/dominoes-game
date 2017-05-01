@@ -5,7 +5,7 @@ import graphicInterface.InterfaceGame;
 
 /**
 * Run the game between a player and the computer.
-* @version march 2016
+* @version 2.0
 *
 */
 public class Game implements InterfaceGame
