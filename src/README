@@ -1,0 +1,17 @@
+To execute the game:
+
+$ java softwareGame.Game
+
+The source files of the game are found in the directory softwareGame
+
+The source files and the class file of the graphical interface 
+that were provided are found in the directory graphicInterface
+
+The class diagram, a report and the javadoc are found 
+in the directory documentation.
+
+
+
+Patricia REINOSO.
+MSC. CCN.
+Télécom SudParis.
