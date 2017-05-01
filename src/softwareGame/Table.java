@@ -12,12 +12,22 @@ import java.util.LinkedList;
 
 public class Table {
 
-	private LinkedList<Domino> pieces = new LinkedList<Domino>();
+	private LinkedList<Domino> pieces; 
 
 	/**
 	 * Class constructor.
 	 */
-	public Table(){}
+	private Table(){
+		pieces = new LinkedList<Domino>();
+	}
+	
+	private static class TableHolder{
+		private static final Table INSTANCE = new Table();
+	}
+	
+	public static Table getInstance(){
+		return TableHolder.INSTANCE;
+	}
 
 	/**
 	 * Add a domino piece on the left end of the table.
