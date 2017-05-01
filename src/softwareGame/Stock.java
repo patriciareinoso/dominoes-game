@@ -3,7 +3,7 @@ package softwareGame;
 /**
  * Representation of the pieces on stock of the game.
  * @author	Patricia REINOSO
- * @version 1.0
+ * @version 2.0
  * @since	2017-03-08
  */
 
@@ -12,19 +12,30 @@ import java.util.Random;
 
 public class Stock {
 
-	private ArrayList<Domino> pieces = new ArrayList<Domino>();
+	private ArrayList<Domino> pieces;
 
    /**
 	* Class constructor.
 	* Create the 28 pieces of the game and add them the stock.
 	*/
-	public Stock(){
+	private Stock(){
+		
+		pieces = new ArrayList<Domino>();
+		
 		for (int i = 0; i < 7 ; i++){
 
 			for(int j = i ; j < 7; j++){
 				pieces.add(new Domino(i,j));
 			}
 		}
+	}
+	
+	private static class StockHolder{
+		private static final Stock INSTANCE = new Stock();
+	}
+	
+	public static Stock getInstance(){
+		return StockHolder.INSTANCE;
 	}
 
 	/**

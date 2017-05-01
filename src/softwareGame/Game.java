@@ -5,7 +5,7 @@ import graphicInterface.InterfaceGame;
 
 /**
 * Run the game between a player and the computer.
-* @version march 2016
+* @version 2.0
 *
 */
 public class Game implements InterfaceGame
@@ -130,8 +130,8 @@ public class Game implements InterfaceGame
     */
 	public void initialize(String name){
 	  
-        this.stock = new Stock();
-        this.table = new Table();
+        this.stock = Stock.getInstance();
+        this.table = Table.getInstance();
         this.player1 = new Player(name);
         this.pc = new Player("PC");
 

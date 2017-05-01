@@ -4,7 +4,7 @@ package softwareGame;
  * Class that represent the board of the Domino Game.
  * Handle the list of pieces that have been played
  * @author	Patricia REINOSO
- * @version 1.0
+ * @version 2.0
  * @since	2017-03-08
  */
 
@@ -12,12 +12,22 @@ import java.util.LinkedList;
 
 public class Table {
 
-	private LinkedList<Domino> pieces = new LinkedList<Domino>();
+	private LinkedList<Domino> pieces; 
 
 	/**
 	 * Class constructor.
 	 */
-	public Table(){}
+	private Table(){
+		pieces = new LinkedList<Domino>();
+	}
+	
+	private static class TableHolder{
+		private static final Table INSTANCE = new Table();
+	}
+	
+	public static Table getInstance(){
+		return TableHolder.INSTANCE;
+	}
 
 	/**
 	 * Add a domino piece on the left end of the table.
