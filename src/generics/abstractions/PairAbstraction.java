@@ -1,4 +1,5 @@
-package abstractions;
+package generics.abstractions;
+
 
 public abstract class PairAbstraction implements PairSpecification{
 

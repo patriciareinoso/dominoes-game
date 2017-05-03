@@ -64,7 +64,7 @@ public class Table {
 		rightEnd = end.getRightValue();
 
 		if (domino.getLeftValue()==leftEnd){
-			domino.switchSide();
+			domino.swap();
 			addLeft(domino);
 			return true;
 		}
@@ -77,7 +77,7 @@ public class Table {
 			return true;
 		}
 		else if (domino.getRightValue()==rightEnd){
-			domino.switchSide();
+			domino.swap();
 			addRight(domino);
 			return true;
 		}

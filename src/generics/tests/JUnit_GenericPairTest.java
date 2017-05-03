@@ -1,11 +1,11 @@
-package tests;
+package generics.tests;
 
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import templates.GenericPair;
+import generics.templates.GenericPair;
 
 /**
  * A test for a 2-tuple (pair) of <em> things </em><br><br>

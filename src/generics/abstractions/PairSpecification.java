@@ -1,4 +1,4 @@
-package abstractions;
+package generics.abstractions;
 
 /**
  * A 2-tuple (pair) of <em> things </em> using an interface rather than a generic class.<br>

@@ -1,11 +1,11 @@
-package templates;
+package generics.templates;
 
-import abstractions.PairAbstraction;
-import abstractions.PairSpecification;
+import generics.abstractions.PairAbstraction;
+import generics.abstractions.PairSpecification;
 
 public class GenericDomino<T> extends GenericPair<T> {
 	
-	GenericDomino(T fst, T snd){
+	public GenericDomino(T fst, T snd){
 		super(fst,snd);
 	}
 

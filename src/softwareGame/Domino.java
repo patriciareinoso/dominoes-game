@@ -8,42 +8,17 @@ package softwareGame;
  */
 
 import graphicInterface.InterfaceDomino;
+import generics.templates.*;
 
-public class Domino implements InterfaceDomino{
-
-	private int leftValue;
-	private int rightValue;
+public class Domino extends GenericDomino implements InterfaceDomino{
 
 	/**
 	 * Class constructor.
 	 * @param leftValue  the first value of the piece.
 	 * @param rightValue the second value of the piece.
 	 */
-	public Domino(int leftValue, int rightValue){
-		setLeftValue(leftValue);
-		setRightValue(rightValue);
-	}
-
-	/**
-	 * Check if 2 domino pices are equal. Two domino pieces are considered 
-	 * equal if they have the same values independently of the side.
-	 * @param domino	the domino to which it is compared.
-	 * @return 			ture if the dominos are equal, false otherwise.
-	 */
-	public boolean equals(Domino domino){
-
-		if ((domino.getLeftValue() == getLeftValue()) && 
-			(domino.getRightValue() == getRightValue())){
-			return true;
-		}
-		domino.switchSide();
-		if ((domino.getLeftValue() == getLeftValue()) && 
-			(domino.getRightValue() == getRightValue())){
-			domino.switchSide();
-			return true;
-		}
-		domino.switchSide();
-		return false;
+	public Domino(Integer leftValue, Integer rightValue){
+		super(leftValue,rightValue);
 	}
 
 	/**
@@ -51,7 +26,8 @@ public class Domino implements InterfaceDomino{
 	 * @return the left value of the piece.
 	 */
 	public int getLeftValue(){
-		return leftValue;
+		int val = (Integer) getFirst();
+		return val;
 	}
 
 	/**
@@ -59,50 +35,24 @@ public class Domino implements InterfaceDomino{
 	 * @return the right value of the piece.
 	 */
 	public int getRightValue(){
-		return rightValue;
+		int val = (Integer) getSecond();
+		return val;
 	}
 
-	/**
-	 * Set the left of the domino piece
-	 * @param leftValue the integer value to assign to the piece.
-	 */
-	public void setLeftValue(int leftValue){
-		this.leftValue = leftValue;
-	}
 
-	/**
-	 * Set the right of the domino piece
-	 * @param rightValue the integer value to assign to the piece.
-	 */
-	public void setRightValue(int rightValue){
-		this.rightValue = rightValue;
-	}
-
-	/**
-	 * Swap the values on the right side and the left side of the domino piece.
-	 */
-	public void switchSide(){
-		int aux;
-		aux = getLeftValue();
-		setLeftValue(getRightValue());
-		setRightValue(aux);
-	}
-
-	/**
-	 * Retrieve the string representation of the domino piece
-	 * @return the string representation of the domino piece
-	 */
-	public String toString(){
-		return "[ " + getLeftValue() + " : " + getRightValue() + " ]";
-	}
-
-	/**
-	 * Check if the piece is a double. A piece is a double if 
-	 * the left value is equal to the right side.
-	 * @return true if it is double. False otherwise.
-	 */
-	public boolean isDouble(){
-		return (getLeftValue() == getRightValue());
+	public static void main (String[] args){
+		Domino dom1 = new Domino(5,5);
+		Domino dom2 = new Domino(0,1);
+		Domino dom3 = new Domino(1,0);
+		Domino dom4 = new Domino(3,5);
+		
+		System.out.println(dom1);
+		System.out.println(dom2.getLeftValue());
+		System.out.println(dom2.getRightValue());
+		
+		System.out.println(dom2.equals(dom3));
+		dom4.swap();
+		System.out.println(dom4);
 	}
 
 }

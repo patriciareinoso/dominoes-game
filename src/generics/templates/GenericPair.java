@@ -1,5 +1,5 @@
-package templates;
-import abstractions.*;
+package generics.templates;
+import generics.abstractions.PairAbstraction;
 
 public class GenericPair<T> extends PairAbstraction{
 
