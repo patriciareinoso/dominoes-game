@@ -13,7 +13,7 @@ import java.util.Iterator;
 
 public class Hand {
 
-	private ArrayList<Domino> myHand = new ArrayList<Domino>();
+	private ArrayList<DominoInt> myHand = new ArrayList<DominoInt>();
 
 	/**
 	 * Class constructor.
@@ -24,7 +24,7 @@ public class Hand {
 	 * Add a domino piece to the hand.
 	 * @param domino the domino piece to be added.
 	 */
-	public void add(Domino domino){
+	public void add(DominoInt domino){
 		myHand.add(domino);
 	}
 
@@ -32,12 +32,12 @@ public class Hand {
 	 * Remove a domino piece from the hand.
 	 * @param domino the domino piece to remove from the hand.
 	 */
-	public void delete(Domino domino){
+	public void delete(DominoInt domino){
 		if (myHand.remove(domino)){
 		}
 		else{
-			for(Iterator<Domino> iter = myHand.listIterator(); iter.hasNext(); ){
-				Domino d = iter.next();
+			for(Iterator<DominoInt> iter = myHand.listIterator(); iter.hasNext(); ){
+				DominoInt d = iter.next();
 				if (d.equals(domino)){
 					myHand.remove(d);
 					break;
@@ -50,7 +50,7 @@ public class Hand {
 	 * Retrieve the hand of the player.
 	 * @return the list corresponding to the hand.
 	 */
-	public ArrayList<Domino> getMyHand(){
+	public ArrayList<DominoInt> getMyHand(){
 		return myHand;
 	}
 
@@ -74,7 +74,7 @@ public class Hand {
 	 * Set the hand
 	 * @param myHand the hand to be set
 	 */
-	public void setMyHand(ArrayList<Domino> myHand){
+	public void setMyHand(ArrayList<DominoInt> myHand){
 		this.myHand = myHand;
 	}
 
@@ -92,10 +92,10 @@ public class Hand {
 	 * @return			an appropriate domino piece to play. If there is no 
 	 *					appropriate piece to play, null.
 	 */
-	public Domino thereIs(int leftVal, int rightVal, boolean first){
+	public DominoInt thereIs(int leftVal, int rightVal, boolean first){
 
-		for(Iterator<Domino> iter = myHand.listIterator(); iter.hasNext(); ){
-			Domino d = iter.next();
+		for(Iterator<DominoInt> iter = myHand.listIterator(); iter.hasNext(); ){
+			DominoInt d = iter.next();
 			if (first && d.isDouble() && d.getLeftValue() == leftVal){
 				return d;
 			}
@@ -133,8 +133,8 @@ public class Hand {
 			return true;
 		}
 		else if (!first){
-			for(Iterator<Domino> iter = myHand.listIterator(); iter.hasNext(); ){
-				Domino d = iter.next();
+			for(Iterator<DominoInt> iter = myHand.listIterator(); iter.hasNext(); ){
+				DominoInt d = iter.next();
 				if ((d.getLeftValue() == leftVal)  || 
 					(d.getLeftValue() == rightVal) ||
 					(d.getRightValue() == leftVal) || 
@@ -144,8 +144,8 @@ public class Hand {
 			}
 		}
 		else if (first && (leftVal == rightVal)){
-			for(Iterator<Domino> iter = myHand.listIterator(); iter.hasNext(); ){
-				Domino d = iter.next();
+			for(Iterator<DominoInt> iter = myHand.listIterator(); iter.hasNext(); ){
+				DominoInt d = iter.next();
 				if (d.getLeftValue() == leftVal && d.getRightValue()==rightVal){
 					return true;
 				}

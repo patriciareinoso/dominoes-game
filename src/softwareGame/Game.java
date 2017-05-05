@@ -80,7 +80,7 @@ public class Game implements InterfaceGame
 	   			break;
             case GGame.PLAY: // The player has clicked on a domino
 
-                Domino domino = new Domino(gGame.getDomino().getLeftValue(),gGame.getDomino().getRightValue());
+                DominoInt domino = new DominoInt(gGame.getDomino().getLeftValue(),gGame.getDomino().getRightValue());
                 System.out.println("domino played : " + domino);
                 switch (indState)
                 {
@@ -140,7 +140,7 @@ public class Game implements InterfaceGame
 		System.out.println( "\nplayer:  "+ player1.getName());
         System.out.println( "\npc:  "+ pc.getName());
 
-        Domino domino;
+        DominoInt domino;
         for(int i = 0; i < 6 ; i++){
             domino = stock.draw();
             player1.getHand().add(domino);
@@ -179,7 +179,7 @@ public class Game implements InterfaceGame
     * If it is ok, call treatAnswer method otherwise send a message.
     * @param d The selected domino.
     */
-   public void treatDoubleAnswer(Domino d)
+   public void treatDoubleAnswer(DominoInt d)
    {
         if  (table.isEmpty() ||
             (d.getLeftValue() == getEnd(1))  ||
@@ -199,7 +199,7 @@ public class Game implements InterfaceGame
 	* Check if the player wins. Otherwise, call computerDecide.
     * @param d The domino selected by the player.
     */
-    public void treatAnswer(Domino d)
+    public void treatAnswer(DominoInt d)
     {
         setButtons(-1);	
         gGame.removeDominoFromHand(d);
@@ -233,7 +233,7 @@ public class Game implements InterfaceGame
                     gGame.setMessage("The stock is over. Please choose a domino or jump.");
                 }
                 else {
-                    Domino d = stock.draw();
+                    DominoInt d = stock.draw();
                     player1.getHand().add(d);
                     gGame.addDominoInHand(d);
                     gGame.setMessage("You draw " + d.getLeftValue() + " : " + d.getRightValue() + " . Please choose a domino or draw again.");
@@ -264,7 +264,7 @@ public class Game implements InterfaceGame
    	public void computerPlay( )
    	{
         System.out.println("state:"+indState+ ". computer plays");
-        Domino d = null;
+        DominoInt d = null;
 
         switch (indState){
             // Searching for the first double
@@ -326,7 +326,7 @@ public class Game implements InterfaceGame
             case 10:
                 // The PC draws
                 gGame.setMessage("The PC draws.");
-                Domino draw = stock.draw();
+                DominoInt draw = stock.draw();
                 pc.getHand().add(draw);
                 setButtons(10);
                 computerDecide(); 
@@ -428,7 +428,7 @@ public class Game implements InterfaceGame
             // Searching for the first double
             case 0: case 1: case 2: case 3: case 4: case 5: case 6:
                 if (pc.getHand().canPlay(indState,indState,true)){
-                    Domino d = pc.getHand().thereIs(indState,indState,true);
+                    DominoInt d = pc.getHand().thereIs(indState,indState,true);
                     System.out.println("Preparation of the game of the PC. Domino : " + d);
                     gGame.setMessage("The computer will play " + d.getLeftValue() + " : " + d.getRightValue() + ". Click on Play PC to validate.");
                 }
@@ -441,7 +441,7 @@ public class Game implements InterfaceGame
             // The player played, it is the PC's turn
             case 7: case 10: 
                 if (pc.getHand().canPlay(getEnd(1),getEnd(2),false)){
-                    Domino d = pc.getHand().thereIs(getEnd(1),getEnd(2),false);
+                    DominoInt d = pc.getHand().thereIs(getEnd(1),getEnd(2),false);
                     System.out.println("Preparation of the game of the PC. Domino : " + d);
                     gGame.setMessage("The computer will play " + d.getLeftValue() + " : " + d.getRightValue() + ". Click on Play PC to validate.");
                     if (stock.isEmpty()){
@@ -467,7 +467,7 @@ public class Game implements InterfaceGame
             // The player played, the Stock is empty
             case 8: 
                 if (pc.getHand().canPlay(getEnd(1),getEnd(2),false)){
-                    Domino d = pc.getHand().thereIs(getEnd(1),getEnd(2),false);
+                    DominoInt d = pc.getHand().thereIs(getEnd(1),getEnd(2),false);
                     System.out.println("Preparation of the game of the PC. Domino : " + d);
                     gGame.setMessage("The computer will play " + d.getLeftValue() + " : " + d.getRightValue() + ". Click on Play PC to validate.");
                     setIndState(12);
@@ -479,7 +479,7 @@ public class Game implements InterfaceGame
                 }
             case 13:
                 if (pc.getHand().canPlay(getEnd(1),getEnd(2),false)){
-                    Domino d = pc.getHand().thereIs(getEnd(1),getEnd(2),false);
+                    DominoInt d = pc.getHand().thereIs(getEnd(1),getEnd(2),false);
                     System.out.println("Preparation of the game of the PC. Domino : " + d);
                     gGame.setMessage("The computer will play " + d.getLeftValue() + " : " + d.getRightValue() + ". Click on Play PC to validate.");
                     setIndState(12);

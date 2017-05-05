@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="UTF-8"?><diagram program="umlet" version="13.3">
+  <zoom_level>9</zoom_level>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>981</x>
+      <y>738</y>
+      <w>225</w>
+      <h>189</h>
+    </coordinates>
+    <panel_attributes>DominoInt
+--
+leftValue:Integer
+rightValue:Integer
+--
+equals(domino:Domino):Boolean
+getLeftValue():Integer
+getRightValue():Integer
+isDouble():Boolean
+setLeftValue(leftValue:Integer)
+setRightValue(rightValue:Integer)
+switchSides()
+toString():String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>279</x>
+      <y>117</y>
+      <w>234</w>
+      <h>243</h>
+    </coordinates>
+    <panel_attributes>Game
+--
+stateMeaning: [String]
+indState:Integer
+--
+computerDecide()
+computerPlay()
+getEnd(side:Integer):Integer
+initialize(name:String)
+playerDraw()
+receivedMessage(val:Integer)
+restart()
+setButtons(state:Integer)
+setIndState(value:Integer)
+treatAnswer(d:Domino)
+treatDoubleAnswer(d:Domino)
+treatJumpAnswer()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>189</x>
+      <y>711</y>
+      <w>387</w>
+      <h>207</h>
+    </coordinates>
+    <panel_attributes>Hand
+--
+ 
+--
+add(domino:Domino)
+canPlay(leftVal:Integer,rightVal:Integer)
+delete(domino:Domino)
+delete(i:Integer)
+getMyHand():[Domino]
+getSize():Integer
+isEmpty():Boolean
+print()
+setMyHand(myHand[Domino])
+thereIs(leftVal:Integer,rightVal:Integer)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>306</x>
+      <y>468</y>
+      <w>189</w>
+      <h>135</h>
+    </coordinates>
+    <panel_attributes>Player
+--
+name:String
+--
+getHand():Hand
+getName():String
+isWin():Boolean
+play()
+setHand(hand:Hand)
+setName(name:String)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>963</x>
+      <y>441</y>
+      <w>189</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>Stock
+--
+- instance: Stock
+--
+- Stock()
++ getInstance(): Stock
++ draw():Domino
++ getPieces():[Domino]
++ getSize():Integer
++ isEmpty():Boolean
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>747</x>
+      <y>207</y>
+      <w>216</w>
+      <h>153</h>
+    </coordinates>
+    <panel_attributes>Table
+--
+- instance: Table
+--
+- Table()
++ getInstance() : Table
++ add(domino:Domino):Boolean
++ getEndValues():Domino
++ getPieces():[Domino]
++ getSize():Integer
++ isEmpty():Boolean</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>801</x>
+      <y>333</y>
+      <w>197</w>
+      <h>458</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+m1=0 .. 1
+m2= *</panel_attributes>
+    <additional_attributes>27;27;27;441;180;441</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>549</x>
+      <y>801</y>
+      <w>449</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+m1= 0..1
+m2=*</panel_attributes>
+    <additional_attributes>27;27;432;27</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>1071</x>
+      <y>558</y>
+      <w>44</w>
+      <h>197</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+m1= 0..1
+m2=  *</panel_attributes>
+    <additional_attributes>27;27;27;180</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>333</x>
+      <y>576</y>
+      <w>98</w>
+      <h>152</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=  1
+m2=  1
+owns &gt;</panel_attributes>
+    <additional_attributes>54;27;54;135</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>324</x>
+      <y>333</y>
+      <w>118</w>
+      <h>152</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=  1
+m2=  2
+is played&gt;</panel_attributes>
+    <additional_attributes>63;27;63;135</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>486</x>
+      <y>189</y>
+      <w>278</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1= 1
+m2= 1
+
+has &gt;</panel_attributes>
+    <additional_attributes>27;45;261;45</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>486</x>
+      <y>81</y>
+      <w>600</w>
+      <h>377</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1= 1
+m2= 1
+inlcudes&gt;</panel_attributes>
+    <additional_attributes>27;45;549;45;549;360</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Note</type>
+    <coordinates>
+      <x>0</x>
+      <y>0</y>
+      <w>243</w>
+      <h>117</h>
+    </coordinates>
+    <panel_attributes>Télécom SudParis
+MSc CCN
+CSC 7203
+Patricia REINOSO
+01/05/2017
+V2
+Class diagram of a domino game
+bg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>891</x>
+      <y>621</y>
+      <w>180</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>/InterfaceDomino/
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>297</x>
+      <y>27</y>
+      <w>189</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>/InterfaceGame/
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>45</x>
+      <y>180</y>
+      <w>90</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>GGame</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>108</x>
+      <y>144</y>
+      <w>188</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1= 1
+m2= 1
+is used &gt;</panel_attributes>
+    <additional_attributes>171;45;27;45</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>378</x>
+      <y>45</y>
+      <w>27</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>981</x>
+      <y>639</y>
+      <w>27</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>11.0;19.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>864</x>
+      <y>153</y>
+      <w>144</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;20.0;140.0;20.0;140.0;120.0;110.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1062</x>
+      <y>378</y>
+      <w>153</w>
+      <h>162</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>10.0;70.0;10.0;20.0;150.0;20.0;150.0;160.0;100.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1251</x>
+      <y>108</y>
+      <w>225</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>/Pair specification/
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1242</x>
+      <y>216</y>
+      <w>234</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>/Pair Abstraction/
+--
+
+--
++ equals()
++ toString()
++ swap()
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1233</x>
+      <y>378</y>
+      <w>270</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>Generic Pair
+--
+- first : T;
+- second : T;
+--
++ getFirst(): T
++ setFirst(fst:Object)
++ getSecond(): T
++ setSecond(snd:Object)
++ swap(pair:GenericPair)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1242</x>
+      <y>585</y>
+      <w>252</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>GenericDomino
+--
+ 
+--
++ equals():Boolean</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1359</x>
+      <y>126</y>
+      <w>27</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1350</x>
+      <y>315</y>
+      <w>27</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1350</x>
+      <y>513</y>
+      <w>27</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1197</x>
+      <y>648</y>
+      <w>135</w>
+      <h>198</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>130.0;10.0;130.0;200.0;10.0;200.0</additional_attributes>
+  </element>
+</diagram>

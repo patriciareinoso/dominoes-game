@@ -2,27 +2,32 @@ package softwareGame;
 
 /**
  * Represent each piece of the Domino Game. 
+ * Extends the GenericDomino class in order to create dominoes chips
+ * with integer number from 0 to 6.
+ * Implements the InterfaceDomino interface in order to use the graphical interface.
  * @author	Patricia REINOSO
- * @version 1.0
+ * @version 2.0
  * @since	2017-03-08
  */
 
 import graphicInterface.InterfaceDomino;
 import generics.templates.*;
 
-public class Domino extends GenericDomino implements InterfaceDomino{
+public class DominoInt extends GenericDomino implements InterfaceDomino{
 
 	/**
 	 * Class constructor.
+	 * Uses the superclass'constructor.
 	 * @param leftValue  the first value of the piece.
 	 * @param rightValue the second value of the piece.
 	 */
-	public Domino(Integer leftValue, Integer rightValue){
+	public DominoInt(Integer leftValue, Integer rightValue){
 		super(leftValue,rightValue);
 	}
 
 	/**
-	 * Retrieve the left value of the domino piece.
+	 * Retrieve the left value of the domino piece. 
+	 * Which corresponds to the first value of the GenericDomino class.
 	 * @return the left value of the piece.
 	 */
 	public int getLeftValue(){
@@ -32,6 +37,7 @@ public class Domino extends GenericDomino implements InterfaceDomino{
 
 	/**
 	 * Retrieve the right value of the domino piece
+	 * Which corresponds to the second value of the GenericDomino class.
 	 * @return the right value of the piece.
 	 */
 	public int getRightValue(){
@@ -41,10 +47,10 @@ public class Domino extends GenericDomino implements InterfaceDomino{
 
 
 	public static void main (String[] args){
-		Domino dom1 = new Domino(5,5);
-		Domino dom2 = new Domino(0,1);
-		Domino dom3 = new Domino(1,0);
-		Domino dom4 = new Domino(3,5);
+		DominoInt dom1 = new DominoInt(5,5);
+		DominoInt dom2 = new DominoInt(0,1);
+		DominoInt dom3 = new DominoInt(1,0);
+		DominoInt dom4 = new DominoInt(3,5);
 		
 		System.out.println(dom1);
 		System.out.println(dom2.getLeftValue());
