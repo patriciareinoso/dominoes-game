@@ -12,13 +12,13 @@ import java.util.LinkedList;
 
 public class Table {
 
-	private LinkedList<Domino> pieces; 
+	private LinkedList<DominoInt> pieces; 
 
 	/**
 	 * Class constructor.
 	 */
 	private Table(){
-		pieces = new LinkedList<Domino>();
+		pieces = new LinkedList<DominoInt>();
 	}
 	
 	private static class TableHolder{
@@ -33,7 +33,7 @@ public class Table {
 	 * Add a domino piece on the left end of the table.
 	 * @param  domino the domino piece to add.
 	 */
-	public void addLeft(Domino domino){
+	public void addLeft(DominoInt domino){
 		pieces.addFirst(domino);
 	}
 
@@ -41,7 +41,7 @@ public class Table {
 	 * Add a domino piece on the right end of the table.
 	 * @param  domino the domino piece to add.
 	*/
-	public void addRight(Domino domino){
+	public void addRight(DominoInt domino){
 		pieces.addLast(domino);
 	}
 
@@ -52,19 +52,19 @@ public class Table {
 	 * @param  domino the domino piece to add.
 	 * @return        true if it was possible to add the piece. False otherwise.
 	 */
-	public boolean add(Domino domino){
+	public boolean add(DominoInt domino){
 		if (isEmpty()){
 			pieces.add(domino);
 			return true;
 		}
 
-		Domino end = getEndValues();
+		DominoInt end = getEndValues();
 		int leftEnd, rightEnd;
 		leftEnd = end.getLeftValue();
 		rightEnd = end.getRightValue();
 
 		if (domino.getLeftValue()==leftEnd){
-			domino.switchSide();
+			domino.swap();
 			addLeft(domino);
 			return true;
 		}
@@ -77,7 +77,7 @@ public class Table {
 			return true;
 		}
 		else if (domino.getRightValue()==rightEnd){
-			domino.switchSide();
+			domino.swap();
 			addRight(domino);
 			return true;
 		}
@@ -92,15 +92,15 @@ public class Table {
 	 * @return 	a domino piece with the end values of the table. Null if the
 	 * 			table is empty.
 	 */
-	public Domino getEndValues(){
+	public DominoInt getEndValues(){
 		if (isEmpty()){
 			return null;
 		}
-		Domino domino;
+		DominoInt domino;
 		int first, last;
 		first = pieces.getFirst().getLeftValue();
 		last = pieces.getLast().getRightValue();
-		domino = new Domino(first, last);
+		domino = new DominoInt(first, last);
 		return domino;
 	}
 
@@ -123,7 +123,7 @@ public class Table {
 	 * Retrieve the list of pieces on the table.
 	 *	@return the list of pieces on the table.
 	 */	
-	public LinkedList<Domino> getPieces(){
+	public LinkedList<DominoInt> getPieces(){
 		return pieces;
 	}
 }

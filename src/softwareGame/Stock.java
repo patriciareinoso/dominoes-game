@@ -12,7 +12,7 @@ import java.util.Random;
 
 public class Stock {
 
-	private ArrayList<Domino> pieces;
+	private ArrayList<DominoInt> pieces;
 
    /**
 	* Class constructor.
@@ -20,12 +20,12 @@ public class Stock {
 	*/
 	private Stock(){
 		
-		pieces = new ArrayList<Domino>();
+		pieces = new ArrayList<DominoInt>();
 		
 		for (int i = 0; i < 7 ; i++){
 
 			for(int j = i ; j < 7; j++){
-				pieces.add(new Domino(i,j));
+				pieces.add(new DominoInt(i,j));
 			}
 		}
 	}
@@ -41,7 +41,7 @@ public class Stock {
 	/**
 	 * @return the list of domino pieces on the stock.
 	 */
-	public ArrayList<Domino> getPieces(){
+	public ArrayList<DominoInt> getPieces(){
 		return pieces;
 	}
 
@@ -50,10 +50,10 @@ public class Stock {
 	 * randomly and the removed from the stock.
 	 * @return the piece drawed from the stock.
 	 */
-	public Domino draw(){
+	public DominoInt draw(){
 		Random randomGen =  new Random();
 		int randomInt = randomGen.nextInt(getSize());
-		Domino domino = pieces.get(randomInt);
+		DominoInt domino = pieces.get(randomInt);
 		pieces.remove(randomInt);
 		return domino;
 	}
