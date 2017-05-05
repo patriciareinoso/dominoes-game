@@ -126,31 +126,6 @@ public class DominoInt extends GenericDomino implements InterfaceDomino{
 		
 	}
 
-	public static void main (String[] args){
-		DominoInt dom1 = new DominoInt(5,5);
-		DominoInt dom2 = new DominoInt(0,1);
-		DominoInt dom3 = new DominoInt(1,0);
-		DominoInt dom4 = new DominoInt(3,5);
-		GenericDomino<Integer> dom7 = new GenericDomino<Integer>(0,1);
-		
-		System.out.println(dom1);
-		System.out.println(dom2.getLeftValue());
-		System.out.println(dom2.getRightValue());
-		
-		System.out.println(dom2.equals(dom3));
-		dom4.swap();
-		System.out.println(dom4);
-		DominoInt dom5 = new DominoInt(5,1);
-		DominoInt dom6 = new DominoInt(0,1);
-		System.out.println(dom5);
-		System.out.println(dom3.equals(dom7));
-		//dom6.setFirst(7);
-		//dom6.setSecond(7);
-		//DominoInt dom10 = new DominoInt(3,7);
-		System.out.println(dom6);
-		
-	}
-
 }
 
 

@@ -64,6 +64,10 @@ public class Hand {
 	public ArrayList<DominoInt> getMyHand(){
 		return myHand;
 	}
+	
+	public String toString(){
+		return myHand.toString();
+	}
 
 	/**
 	 * Retrieve the size of the hand.
@@ -174,67 +178,5 @@ public class Hand {
 		}
 		return false;
 	}
-	
-	public static void main (String[] args){
-		DominoInt dom1 = new DominoInt(5,5);
-		DominoInt dom2 = new DominoInt(0,1);
-		DominoInt dom3 = new DominoInt(2,0);
-		DominoInt dom4 = new DominoInt(3,5);
-		DominoInt dom5 = new DominoInt(2,0);
-		DominoInt dom6 = new DominoInt(1,5);
-		DominoInt dom7 = new DominoInt(4,4);
-		
-		Hand myHand = new Hand();
-		Hand nullHand = null;
-		Hand nullH = null;
-		Hand emptyHand = new Hand();
-		
-		myHand.add(dom1);
-		myHand.add(dom2);
-		myHand.add(dom3);
-		System.out.println(myHand.getMyHand());
-		//myHand.add(null);
-		//nullHand.add(dom1);
-		
-		myHand.delete(dom1);
-		System.out.println(myHand.getMyHand());
-		myHand.delete(dom2);
-		System.out.println(myHand.getMyHand());
-		myHand.add(dom2);
-		System.out.println(myHand.getMyHand());
-		myHand.delete(dom5);
-		System.out.println(myHand.getMyHand());
-		//myHand.add(dom2);
-		//myHand.delete(null);
-		myHand.delete(dom4);
-		System.out.println(myHand.getMyHand());
-		//myHand.delete(dom3);
-		
-		//System.out.println(nullHand.getMyHand());
-		
-		ArrayList<DominoInt> myHand2 = new ArrayList<DominoInt>();
-		myHand.setMyHand(myHand2);
-		System.out.println(myHand.getMyHand());
-		//myHand.setMyHand(null);
-		myHand.add(dom1);
-		myHand.add(dom2);
-		myHand.add(dom3);
-		myHand.add(dom7);
-		System.out.println(myHand.getMyHand());
-		
-		System.out.println(myHand.thereIs(1,1,true));
-		System.out.println(myHand.thereIs(4,4,true));
-		System.out.println(myHand.thereIs(4,1,false));
-		System.out.println(myHand.thereIs(4,4,false));
-		System.out.println(myHand.thereIs(6,6,false));
-		//System.out.println(myHand.thereIs(4,1,true));
-		System.out.println(myHand.canPlay(1,1,true));
-		System.out.println(myHand.canPlay(4,4,true));
-		System.out.println(myHand.canPlay(4,1,false));
-		System.out.println(myHand.canPlay(4,4,false));
-		System.out.println(myHand.canPlay(6,6,false));
-		System.out.println(myHand.canPlay(4,1,true));
-	}
-	
 	
 }

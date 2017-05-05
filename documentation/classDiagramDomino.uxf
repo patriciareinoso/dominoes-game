@@ -84,14 +84,14 @@ thereIs(leftVal:Integer,rightVal:Integer)
     </coordinates>
     <panel_attributes>Player
 --
-name:String
+- name:String
 --
-getHand():Hand
-getName():String
-isWin():Boolean
-play()
-setHand(hand:Hand)
-setName(name:String)
++ getHand():Hand
++ getName():String
++ isWin():Boolean
++ setHand(hand:Hand)
++ setName(name:String)
++ toString():String
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -122,7 +122,7 @@ setName(name:String)
       <x>747</x>
       <y>207</y>
       <w>216</w>
-      <h>153</h>
+      <h>171</h>
     </coordinates>
     <panel_attributes>Table
 --
@@ -134,21 +134,22 @@ setName(name:String)
 + getEndValues():Domino
 + getPieces():[Domino]
 + getSize():Integer
-+ isEmpty():Boolean</panel_attributes>
++ isEmpty():Boolean
++ toString():String</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>801</x>
-      <y>333</y>
+      <y>351</y>
       <w>197</w>
-      <h>458</h>
+      <h>440</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 m1=0 .. 1
 m2= *</panel_attributes>
-    <additional_attributes>27;27;27;441;180;441</additional_attributes>
+    <additional_attributes>27;27;27;423;180;423</additional_attributes>
   </element>
   <element>
     <type>com.baselet.element.old.element.Relation</type>
@@ -332,7 +333,7 @@ is used &gt;</panel_attributes>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 </panel_attributes>
-    <additional_attributes>10.0;60.0;10.0;20.0;140.0;20.0;140.0;120.0;110.0;120.0</additional_attributes>
+    <additional_attributes>10.0;57.0;10.0;20.0;140.0;20.0;140.0;120.0;110.0;120.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -383,7 +384,7 @@ is used &gt;</panel_attributes>
       <x>1233</x>
       <y>378</y>
       <w>270</w>
-      <h>144</h>
+      <h>171</h>
     </coordinates>
     <panel_attributes>Generic Pair
 --
@@ -392,16 +393,19 @@ is used &gt;</panel_attributes>
 --
 + getFirst(): T
 + getSecond(): T
++ matches(val:T):Boolean
++ matches(val1:T, val2:T):Boolean
 + setFirst(fst:Object)
 + setSecond(snd:Object)
-+ swap(pair:GenericPair)</panel_attributes>
++ swap(pair:GenericPair)
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>1242</x>
-      <y>585</y>
+      <y>612</y>
       <w>252</w>
       <h>81</h>
     </coordinates>
@@ -439,22 +443,22 @@ is used &gt;</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1350</x>
-      <y>513</y>
+      <y>540</y>
       <w>27</w>
-      <h>81</h>
+      <h>90</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>1197</x>
-      <y>657</y>
+      <y>684</y>
       <w>189</w>
-      <h>189</h>
+      <h>162</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>190.0;10.0;190.0;190.0;10.0;190.0</additional_attributes>
+    <additional_attributes>190.0;10.0;190.0;160.0;10.0;160.0</additional_attributes>
   </element>
 </diagram>
