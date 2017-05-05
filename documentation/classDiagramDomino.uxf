@@ -98,14 +98,18 @@ thereIs(leftVal:Integer,rightVal:Integer)
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>963</x>
-      <y>441</y>
+      <x>981</x>
+      <y>360</y>
       <w>189</w>
-      <h>144</h>
+      <h>225</h>
     </coordinates>
     <panel_attributes>Stock
 --
 - instance: Stock
++ MINDOM: Integer
++ MAXDOM: Integer
++ MINSIZE: Integer
++ MAXSIZE: Integer
 --
 - Stock()
 + getInstance(): Stock
@@ -113,6 +117,8 @@ thereIs(leftVal:Integer,rightVal:Integer)
 + getPieces():[Domino]
 + getSize():Integer
 + isEmpty():Boolean
++ invariant():Boolean
++ toString():String
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -225,14 +231,14 @@ has &gt;</panel_attributes>
     <coordinates>
       <x>486</x>
       <y>81</y>
-      <w>600</w>
-      <h>377</h>
+      <w>618</w>
+      <h>305</h>
     </coordinates>
     <panel_attributes>lt=-
 m1= 1
 m2= 1
 inlcudes&gt;</panel_attributes>
-    <additional_attributes>27;45;549;45;549;360</additional_attributes>
+    <additional_attributes>27;45;567;45;567;288</additional_attributes>
   </element>
   <element>
     <type>com.baselet.element.old.element.Note</type>
@@ -339,13 +345,13 @@ is used &gt;</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1062</x>
-      <y>378</y>
+      <y>297</y>
       <w>153</w>
-      <h>162</h>
+      <h>216</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 </panel_attributes>
-    <additional_attributes>10.0;70.0;10.0;20.0;150.0;20.0;150.0;160.0;100.0;160.0</additional_attributes>
+    <additional_attributes>10.0;80.0;10.0;20.0;150.0;20.0;150.0;220.0;100.0;220.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>

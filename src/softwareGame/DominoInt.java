@@ -19,7 +19,7 @@ import tools.InvariantBrokenException;
 public class DominoInt extends GenericDomino implements InterfaceDomino{
 
 	/**
-	 * Minimun value of a side of a domino on the standard domino set 
+	 * Minimum value of a side of a domino on the standard domino set 
 	 */
 	public static final int MIN = 0;
 	
