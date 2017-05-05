@@ -30,7 +30,7 @@ public class Stock {
 	public static final int MAXDOM = DominoInt.MAX;
 	
 	/**
-	 * Minimum value of the size of the stock is when it is empty. 
+	 * Minimum value of the size of the stock. When it is empty. 
 	 */
 	public static final int MINSIZE = 0;
 	

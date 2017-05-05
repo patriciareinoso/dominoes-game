@@ -5,7 +5,7 @@
     <coordinates>
       <x>981</x>
       <y>738</y>
-      <w>225</w>
+      <w>243</w>
       <h>162</h>
     </coordinates>
     <panel_attributes>DominoInt
@@ -13,7 +13,7 @@
 MIN:Integer
 MAX:Integer
 --
-equals(domino:Domino):Boolean
+equals(domino:DominoInt):Boolean
 getLeftValue():Integer
 getRightValue():Integer
 invariant():Boolean
@@ -44,8 +44,8 @@ receivedMessage(val:Integer)
 restart()
 setButtons(state:Integer)
 setIndState(value:Integer)
-treatAnswer(d:Domino)
-treatDoubleAnswer(d:Domino)
+treatAnswer(d:DominoInt)
+treatDoubleAnswer(d:DominoInt)
 treatJumpAnswer()</panel_attributes>
     <additional_attributes/>
   </element>
@@ -61,15 +61,15 @@ treatJumpAnswer()</panel_attributes>
 --
  
 --
-add(domino:Domino)
+add(domino:DominoInt)
 canPlay(leftVal:Integer,rightVal:Integer)
-delete(domino:Domino)
+delete(domino:DominoInt)
 delete(i:Integer)
-getMyHand():[Domino]
+getMyHand():[DominoInt]
 getSize():Integer
 isEmpty():Boolean
 print()
-setMyHand(myHand[Domino])
+setMyHand(myHand[DominoInt])
 thereIs(leftVal:Integer,rightVal:Integer)
 </panel_attributes>
     <additional_attributes/>
@@ -113,8 +113,8 @@ thereIs(leftVal:Integer,rightVal:Integer)
 --
 - Stock()
 + getInstance(): Stock
-+ draw():Domino
-+ getPieces():[Domino]
++ draw():DominoInt
++ getPieces():[DominoInt]
 + getSize():Integer
 + isEmpty():Boolean
 + invariant():Boolean
@@ -232,13 +232,13 @@ has &gt;</panel_attributes>
       <x>486</x>
       <y>81</y>
       <w>618</w>
-      <h>305</h>
+      <h>296</h>
     </coordinates>
     <panel_attributes>lt=-
 m1= 1
 m2= 1
 inlcudes&gt;</panel_attributes>
-    <additional_attributes>27;45;567;45;567;288</additional_attributes>
+    <additional_attributes>27;45;567;45;567;279</additional_attributes>
   </element>
   <element>
     <type>com.baselet.element.old.element.Note</type>
@@ -344,14 +344,14 @@ is used &gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1062</x>
+      <x>1107</x>
       <y>297</y>
-      <w>153</w>
+      <w>108</w>
       <h>216</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 </panel_attributes>
-    <additional_attributes>10.0;80.0;10.0;20.0;150.0;20.0;150.0;220.0;100.0;220.0</additional_attributes>
+    <additional_attributes>10.0;70.0;10.0;20.0;100.0;20.0;100.0;220.0;70.0;220.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -459,12 +459,12 @@ is used &gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1197</x>
+      <x>1215</x>
       <y>684</y>
-      <w>189</w>
+      <w>171</w>
       <h>162</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>190.0;10.0;190.0;160.0;10.0;160.0</additional_attributes>
+    <additional_attributes>170.0;10.0;170.0;160.0;10.0;160.0</additional_attributes>
   </element>
 </diagram>
