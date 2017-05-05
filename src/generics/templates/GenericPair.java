@@ -3,8 +3,8 @@ import generics.abstractions.PairAbstraction;
 
 public class GenericPair<T> extends PairAbstraction{
 
-	private T first;
-	private T second;
+	protected T first;
+	protected T second;
 	
 	public GenericPair(T fst, T snd){
 		setFirst(fst);

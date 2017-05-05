@@ -6,21 +6,20 @@
       <x>981</x>
       <y>738</y>
       <w>225</w>
-      <h>189</h>
+      <h>162</h>
     </coordinates>
     <panel_attributes>DominoInt
 --
-leftValue:Integer
-rightValue:Integer
+MIN:Integer
+MAX:Integer
 --
 equals(domino:Domino):Boolean
 getLeftValue():Integer
 getRightValue():Integer
-isDouble():Boolean
-setLeftValue(leftValue:Integer)
-setRightValue(rightValue:Integer)
-switchSides()
-toString():String</panel_attributes>
+invariant():Boolean
+setFirst(fst:Object)
+setSecond(snd:Object)
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -392,8 +391,8 @@ is used &gt;</panel_attributes>
 - second : T;
 --
 + getFirst(): T
-+ setFirst(fst:Object)
 + getSecond(): T
++ setFirst(fst:Object)
 + setSecond(snd:Object)
 + swap(pair:GenericPair)</panel_attributes>
     <additional_attributes/>
@@ -404,13 +403,14 @@ is used &gt;</panel_attributes>
       <x>1242</x>
       <y>585</y>
       <w>252</w>
-      <h>72</h>
+      <h>81</h>
     </coordinates>
     <panel_attributes>GenericDomino
 --
  
 --
-+ equals():Boolean</panel_attributes>
++ equals():Boolean
++ isDouble():Boolean</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -450,11 +450,11 @@ is used &gt;</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1197</x>
-      <y>648</y>
-      <w>135</w>
-      <h>198</h>
+      <y>657</y>
+      <w>189</w>
+      <h>189</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>130.0;10.0;130.0;200.0;10.0;200.0</additional_attributes>
+    <additional_attributes>190.0;10.0;190.0;190.0;10.0;190.0</additional_attributes>
   </element>
 </diagram>

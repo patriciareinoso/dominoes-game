@@ -40,7 +40,7 @@ public class DominoInt extends GenericDomino implements InterfaceDomino{
 	 * @throw InvariantBrokenException if the domino state is not valid after execution.
 	 */
 	public DominoInt(Integer leftValue, Integer rightValue) throws IllegalArgumentException, InvariantBrokenException{
-		super(leftValue,rightValue);
+		super(MIN,MIN);
 		if (leftValue < MIN || leftValue > MAX || rightValue < MIN || rightValue > MAX){
 			throw new IllegalArgumentException("Illegal arguments.");
 		}
@@ -85,6 +85,46 @@ public class DominoInt extends GenericDomino implements InterfaceDomino{
 		}
 		return false;
 	}
+	
+	/**
+	 * Set the left value of the Domino.
+	 * Override the GenericPair method to handle exceptions.
+	 * @param obj Object assign to the left value.
+	 * @throws IllegalArgumentException if obj is null, is not an Integer or
+	 * is out of bound.
+	 */
+	@Override
+	public void setFirst(Object obj) throws IllegalArgumentException{
+		if (obj == null || !(obj instanceof Integer)){
+			throw new IllegalArgumentException("Illegal arguments.");
+		}
+		Integer val = (Integer)obj;
+		if (val < MIN   || val > MAX){
+			throw new IllegalArgumentException("Illegal arguments.");
+		}
+		this.first = val;
+		
+	}
+
+	/**
+	 * Set the left value of the Domino.
+	 * Override the GenericPair method to handle exceptions.
+	 * @param obj Object assign to the left value.
+	 * @throws IllegalArgumentException if obj is null, is not an Integer or
+	 * is out of bound.
+	 */
+	@Override
+	public void setSecond(Object obj) throws IllegalArgumentException{
+		if (obj == null || !(obj instanceof Integer)){
+			throw new IllegalArgumentException("Illegal arguments.");
+		}
+		Integer val = (Integer)obj;
+		if (val < MIN   || val > MAX){
+			throw new IllegalArgumentException("Illegal arguments.");
+		}
+		this.second = val;
+		
+	}
 
 	public static void main (String[] args){
 		DominoInt dom1 = new DominoInt(5,5);
@@ -104,6 +144,10 @@ public class DominoInt extends GenericDomino implements InterfaceDomino{
 		DominoInt dom6 = new DominoInt(0,1);
 		System.out.println(dom5);
 		System.out.println(dom3.equals(dom7));
+		//dom6.setFirst(7);
+		//dom6.setSecond(7);
+		//DominoInt dom10 = new DominoInt(3,7);
+		System.out.println(dom6);
 		
 	}
 

@@ -31,6 +31,15 @@ public class GenericDomino<T> extends GenericPair<T> {
 			
 	 }
 	
+	public boolean matches(T val){
+		return (getFirst().equals(val) || getSecond().equals(val));
+	}
+	
+	public boolean matches(T val1, T val2){
+		return (getFirst().equals(val1) || getSecond().equals(val1) ||
+				getFirst().equals(val2) || getSecond().equals(val2));
+	}
+	
 	public static void main (String[] args){
 		GenericDomino<Integer> dom1 = new GenericDomino<Integer>(5,5);
 		GenericDomino<Character> dom2 = new GenericDomino<Character>('a','a');
@@ -45,6 +54,14 @@ public class GenericDomino<T> extends GenericPair<T> {
 		System.out.println(dom2.equals(dom2));
 		System.out.println(dom3.equals(dom4));
 		System.out.println(dom4.equals(dom6));
+		System.out.println(dom4.matches(0));
+		System.out.println(dom4.matches(1));
+		System.out.println(dom4.matches(2));
+		System.out.println(dom4.matches(0,1));
+		System.out.println(dom4.matches(2,4));
+		System.out.println(dom4.matches(2,1));
+		System.out.println(dom4.matches(0,2));
+		//System.out.println(dom4.matches('a'));
 	}
 	
 }
