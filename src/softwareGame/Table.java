@@ -2,17 +2,15 @@ package softwareGame;
 
 /**
  * Class that represent the board of the standard domino Game.
- * It may play a maximum of 28 domino pieces.
- * Handle the list of pieces that have been played
+ * It may place a maximum of 28 domino pieces.
+ * Handle the list of domino pieces that have been played.
  * @author	Patricia REINOSO
- * @version 2.1.0
+ * @version 2.1.1
  * @since	2017-03-08
  */
 
 import graphicInterface.BadMatchException;
-
 import java.util.LinkedList;
-
 import tools.InvariantBrokenException;
 
 public class Table {
@@ -20,17 +18,17 @@ public class Table {
 	private LinkedList<DominoInt> pieces; 
 	
 	/**
-	 * Minimum value of the size of the table. When it is empty. 
+	 * Minimum value of the size of the table. Value reach when the table is empty. 
 	 */
 	public static final int MINSIZE = 0;
 	
 	/**
-	 * Maximum value of the size of the hand. When none of the
+	 * Maximum value of the size of the hand. Value reach When all the
 	 * domino pieces has been placed on the table.
 	 */
 	public static final  int MAXSIZE = 28;
 	
-	public static final boolean INVARIANT = MAXSIZE > MINSIZE && MAXSIZE == Game.TOTALPIECES;
+	public static final boolean INVARIANT = (MAXSIZE > MINSIZE) && (MAXSIZE == Game.TOTALPIECES);
 
 	/**
 	 * Class constructor.
@@ -52,11 +50,11 @@ public class Table {
 	 * Add a domino piece on the left end of the table.
 	 * The right side of the domino must match the left end of the board.
 	 * @param  domino the domino piece to add.
-	 * @throws IllegalArgumentException if the domino is null or not valid.
 	 * @throws BadMatchException if Domino does not match with table left side.
-	 * @throw InvariantBrokenException if the table state is not valid after execution.
+	 * @throws IllegalArgumentException if the domino is null or not valid.
+	 * @throws InvariantBrokenException if the table state is not valid after execution.
 	 */
-	public void addLeft(DominoInt domino)  throws IllegalArgumentException, BadMatchException, InvariantBrokenException{
+	public void addLeft(DominoInt domino)  throws BadMatchException, IllegalArgumentException, InvariantBrokenException{
 		if (domino == null || !domino.invariant()){
 			throw new IllegalArgumentException("Illegal argument. Domino is null or invalid.");
 		}
@@ -79,7 +77,7 @@ public class Table {
 	 * @param  domino the domino piece to add.
 	 * @throws IllegalArgumentException if the domino is null or not valid.
 	 * @throws BadMatchException if Domino does not match with table right side.
-	 * @throw InvariantBrokenException if the table state is not valid after execution.
+	 * @throws InvariantBrokenException if the table state is not valid after execution.
 	*/
 	public void addRight(DominoInt domino)  throws IllegalArgumentException, BadMatchException, InvariantBrokenException{
 		if (domino == null || !domino.invariant()){
@@ -107,7 +105,7 @@ public class Table {
 	 * @param  domino the domino piece to add.
 	 * @return        true if it was possible to add the piece. False otherwise.
 	 * @throws IllegalArgumentException if the domino is null or not valid.
-	 * @throw InvariantBrokenException if the table state is not valid after execution.
+	 * @throws InvariantBrokenException if the table state is not valid after execution.
 	 */
 	public boolean add(DominoInt domino)  throws IllegalArgumentException, InvariantBrokenException{
 		if (domino == null || !domino.invariant()){

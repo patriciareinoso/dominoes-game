@@ -45,7 +45,7 @@ public class Stock {
    /**
 	* Class constructor.
 	* Create the 28 standard pieces of the game and add them the stock.
-	* @throw InvariantBrokenException if the Stock state is not valid after execution.
+	* @throws InvariantBrokenException if the Stock state is not valid after execution.
 	*/
 	private Stock() throws InvariantBrokenException{
 		
@@ -86,7 +86,7 @@ public class Stock {
 	 * randomly and the removed from the stock.
 	 * @return the piece drawn from the stock.
 	 * @throws IllegalStateException if the Stock is empty.
-	 * @throw InvariantBrokenException if the Stock state is not valid after execution.
+	 * @throws InvariantBrokenException if the Stock state is not valid after execution.
 	 */
 	public DominoInt draw() throws IllegalStateException, InvariantBrokenException{
 		if (isEmpty()){

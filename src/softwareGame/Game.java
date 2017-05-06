@@ -94,7 +94,7 @@ public class Game implements InterfaceGame
     * This method is called when an event is produced in the graphical interface.
     * @param val The state of the game.
     * @throws IllegalArgumentException if val is out of bounds.
-    * @throw InvariantBrokenException if the Game state is not valid after execution.
+    * @throws InvariantBrokenException if the Game state is not valid after execution.
     */
    public void setIndState(int val) throws IllegalArgumentException, InvariantBrokenException{
 	   if (val < MINSTATE || val > MAXSTATE){
@@ -110,7 +110,7 @@ public class Game implements InterfaceGame
     * This method is called when an event is produced in the graphical interface.
     * @param val The state of the game.
     * @throws IllegalStateException if val
-    * @throw InvariantBrokenException if the Game state is not valid after execution.
+    * @throws InvariantBrokenException if the Game state is not valid after execution.
     */
    public void receivedMessage(int val) throws IllegalStateException, InvariantBrokenException {
 	   
@@ -178,7 +178,7 @@ public class Game implements InterfaceGame
     * graphical interface : hand, button and send it the first message.
     * @param name The name of the player
     * @throws IllegalArgumentException if name is null.
-    * @throw InvariantBrokenException if the Game state is not valid after execution.
+    * @throws InvariantBrokenException if the Game state is not valid after execution.
     */
 	public void initialize(String name) throws IllegalArgumentException, InvariantBrokenException{
 		if (name == null){
@@ -258,7 +258,7 @@ public class Game implements InterfaceGame
 	* Check if the player wins. Otherwise, call computerDecide.
     * @param d The domino selected by the player.
     * @throws IllegalArgumentException if the domino is null or not valid.
-    * @throw InvariantBrokenException if the Game state is not valid after execution.
+    * @throws InvariantBrokenException if the Game state is not valid after execution.
     */
     public void treatAnswer(DominoInt d) throws IllegalArgumentException, InvariantBrokenException{
     	if (d == null || !d.invariant()){
@@ -290,7 +290,7 @@ public class Game implements InterfaceGame
 	* otherwise the drawn domino is added to the hand and the graphic hand
     * and, then, the computer plays (state 8).
 	* @throws IllegalStateException if state is not on the values [7,8].
-	* @throw InvariantBrokenException if the Game state is not valid after execution.
+	* @throws InvariantBrokenException if the Game state is not valid after execution.
 	*/
 	public void playerDraw() throws IllegalStateException, InvariantBrokenException{ 
 	
@@ -334,7 +334,7 @@ public class Game implements InterfaceGame
 	 * If n=11 the pc is blocked.
      * If n=12 the pc can play but the stock is empty.
      * @throws IllegalStateException if state is not on the values [0..6,9-12].
-     * @throw InvariantBrokenException if the Game state is not valid after execution.
+     * @throws InvariantBrokenException if the Game state is not valid after execution.
 	 */
    	public void computerPlay() throws IllegalStateException, InvariantBrokenException {
    		
@@ -501,7 +501,7 @@ public class Game implements InterfaceGame
 	 * Send the appropriate message to the player and ask to click on the 
 	 * Play PC button to validate the action.
 	 * @throws IllegalStateException if state is not on the values [0..6,7,8,10,13].
-	 * @throw InvariantBrokenException if the Game state is not valid after execution.
+	 * @throws InvariantBrokenException if the Game state is not valid after execution.
 	 */
     public void computerDecide() throws IllegalStateException, InvariantBrokenException {
     	DominoInt d;
