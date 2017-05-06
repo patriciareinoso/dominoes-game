@@ -1,5 +1,6 @@
 package softwareGame;
 
+import tools.InvariantBrokenException;
 import graphicInterface.GGame;
 import graphicInterface.InterfaceGame;
 
@@ -80,33 +81,38 @@ public class Game implements InterfaceGame
 				 );
 	 }
 	 
-   /**
-    * Constructor for 2 players.Create a graphical interface and send it a message to enter the player's name.
-    */
-   public Game(){
-        this.gGame = new GGame(this);
-        gGame.setVisible(true);
+	 /**
+      * Constructor for 2 players.Create a graphical interface and send it a message to enter the player's name.
+      */
+	 public Game(){
+		this.gGame = new GGame(this);
+		gGame.setVisible(true);
 		gGame.setMessage("Hello. Enter your name: ");
-   }
+	 }
    
    /**
     * This method is called when an event is produced in the graphical interface.
     * @param val The state of the game.
     * @throws IllegalArgumentException if val is out of bounds.
+    * @throw InvariantBrokenException if the Game state is not valid after execution.
     */
-   public void setIndState(int val) throws IllegalArgumentException{
+   public void setIndState(int val) throws IllegalArgumentException, InvariantBrokenException{
 	   if (val < MINSTATE || val > MAXSTATE){
 		   throw new IllegalArgumentException("Illegal argument.");
 	   } 
 	   this.indState = val;
+	   if (!invariant()){
+			throw new InvariantBrokenException("Invariant broken.");
+		}
    }
    
     /**
     * This method is called when an event is produced in the graphical interface.
     * @param val The state of the game.
-    * @throws IllegalStateException if val 
+    * @throws IllegalStateException if val
+    * @throw InvariantBrokenException if the Game state is not valid after execution.
     */
-   public void receivedMessage(int val) throws IllegalStateException {
+   public void receivedMessage(int val) throws IllegalStateException, InvariantBrokenException {
 	   
         System.out.println( "\ntype received message  "+ val +" for state "+indState);
         switch (val) {
@@ -161,6 +167,9 @@ public class Game implements InterfaceGame
             default:
             	throw new IllegalStateException("Illegal state.");
         }
+		if (!invariant()){
+			throw new InvariantBrokenException("Invariant broken.");
+		} 
    
 	}
 
@@ -169,8 +178,9 @@ public class Game implements InterfaceGame
     * graphical interface : hand, button and send it the first message.
     * @param name The name of the player
     * @throws IllegalArgumentException if name is null.
+    * @throw InvariantBrokenException if the Game state is not valid after execution.
     */
-	public void initialize(String name) throws IllegalArgumentException{
+	public void initialize(String name) throws IllegalArgumentException, InvariantBrokenException{
 		if (name == null){
 			   throw new IllegalArgumentException("Illegal argument.");
 		   }
@@ -196,6 +206,9 @@ public class Game implements InterfaceGame
 		System.out.println( "\npc hand:  "+ pc.getHand());
 		gGame.setMessage("Hello " + name + " good luck.  Please click on double 6 or jump."); 
         gGame.setEnabledJump(true);
+        if (!invariant()){
+			throw new InvariantBrokenException("Invariant broken.");
+		} 
 	}
    
    /**
@@ -245,8 +258,9 @@ public class Game implements InterfaceGame
 	* Check if the player wins. Otherwise, call computerDecide.
     * @param d The domino selected by the player.
     * @throws IllegalArgumentException if the domino is null or not valid.
+    * @throw InvariantBrokenException if the Game state is not valid after execution.
     */
-    public void treatAnswer(DominoInt d) throws IllegalArgumentException{
+    public void treatAnswer(DominoInt d) throws IllegalArgumentException, InvariantBrokenException{
     	if (d == null || !d.invariant()){
 			throw new IllegalArgumentException("Illegal argument. Domino is null or invalid.");
 		}
@@ -258,6 +272,11 @@ public class Game implements InterfaceGame
         System.out.println("\ntable :  " + table);
         System.out.println("\ntable ends :  " + getEnd(1) + " - " + getEnd(2));
         System.out.println("\nplayer's hand :  " + player1.getHand());
+        
+        if (!invariant()){
+			throw new InvariantBrokenException("Invariant broken.");
+		} 
+        
         if (player1.isWin()){
 			gGame.setMessage("CONGRATULATIONS. You WIN.");
 		}
@@ -271,8 +290,9 @@ public class Game implements InterfaceGame
 	* otherwise the drawn domino is added to the hand and the graphic hand
     * and, then, the computer plays (state 8).
 	* @throws IllegalStateException if state is not on the values [7,8].
+	* @throw InvariantBrokenException if the Game state is not valid after execution.
 	*/
-	public void playerDraw() throws IllegalStateException{ 
+	public void playerDraw() throws IllegalStateException, InvariantBrokenException{ 
 	
         switch(indState){
             case 7:
@@ -298,6 +318,9 @@ public class Game implements InterfaceGame
             default: 
             	throw new IllegalStateException("Illegal state.");
         }
+        if (!invariant()){
+			throw new InvariantBrokenException("Invariant broken.");
+		} 
 	}
 	 
 	/**
@@ -311,8 +334,9 @@ public class Game implements InterfaceGame
 	 * If n=11 the pc is blocked.
      * If n=12 the pc can play but the stock is empty.
      * @throws IllegalStateException if state is not on the values [0..6,9-12].
+     * @throw InvariantBrokenException if the Game state is not valid after execution.
 	 */
-   	public void computerPlay() throws IllegalStateException {
+   	public void computerPlay() throws IllegalStateException, InvariantBrokenException {
    		
         System.out.println("\nstate:"+indState+ ". Computer plays");
         DominoInt d = null;
@@ -413,6 +437,9 @@ public class Game implements InterfaceGame
 	System.out.println("\ntable :  " + table);
     System.out.println("\ntable ends :  " + getEnd(1) + " - " + getEnd(2));
     System.out.println("\nPC hand :" + pc.getHand());
+    if (!invariant()){
+		throw new InvariantBrokenException("Invariant broken.");
+	} 
    }
 
 	/**
@@ -474,8 +501,9 @@ public class Game implements InterfaceGame
 	 * Send the appropriate message to the player and ask to click on the 
 	 * Play PC button to validate the action.
 	 * @throws IllegalStateException if state is not on the values [0..6,7,8,10,13].
+	 * @throw InvariantBrokenException if the Game state is not valid after execution.
 	 */
-    public void computerDecide() throws IllegalStateException{
+    public void computerDecide() throws IllegalStateException, InvariantBrokenException {
     	DominoInt d;
         switch(indState){
             // Searching for the first double to put on the table.
@@ -550,6 +578,10 @@ public class Game implements InterfaceGame
             	
         }   
         gGame.setEnabledPlayPC(true);
+        
+        if (!invariant()){
+    		throw new InvariantBrokenException("Invariant broken.");
+    	} 
     }
 
 	/**
