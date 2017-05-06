@@ -1,6 +1,6 @@
 package graphicInterface;
 
-public class BadMatchException extends Exception 
+public class BadMatchException extends RuntimeException 
 {
 
 	/**
