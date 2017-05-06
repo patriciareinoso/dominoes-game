@@ -28,7 +28,7 @@ setSecond(snd:Object)
       <x>279</x>
       <y>117</y>
       <w>234</w>
-      <h>243</h>
+      <h>252</h>
     </coordinates>
     <panel_attributes>Game
 --
@@ -39,6 +39,7 @@ computerDecide()
 computerPlay()
 getEnd(side:Integer):Integer
 initialize(name:String)
+invariant():Boolean
 playerDraw()
 receivedMessage(val:Integer)
 restart()
@@ -201,15 +202,15 @@ owns &gt;</panel_attributes>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>324</x>
-      <y>333</y>
+      <y>342</y>
       <w>118</w>
-      <h>152</h>
+      <h>143</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=  1
 m2=  2
 is played&gt;</panel_attributes>
-    <additional_attributes>63;27;63;135</additional_attributes>
+    <additional_attributes>63;27;63;126</additional_attributes>
   </element>
   <element>
     <type>com.baselet.element.old.element.Relation</type>

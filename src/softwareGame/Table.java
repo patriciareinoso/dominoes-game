@@ -30,7 +30,7 @@ public class Table {
 	 */
 	public static final  int MAXSIZE = 28;
 	
-	public static final boolean INVARIANT = MAXSIZE > MINSIZE;
+	public static final boolean INVARIANT = MAXSIZE > MINSIZE && MAXSIZE == Game.TOTALPIECES;
 
 	/**
 	 * Class constructor.

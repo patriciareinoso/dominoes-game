@@ -98,9 +98,9 @@ public class Hand {
 	}
 
 	/**
-	 * Retrieve an appropiate domino piece to play.
+	 * Retrieve an appropriate domino piece to play.
 	 * Method used by the computer. 
-	 * Consider the fact that if none of the players posses any double
+	 * Consider the fact that if none of the players possess any double
 	 * to do the first move, the user player is the one who puts the first piece 
 	 * on the table.
 	 * If it is the first piece to put on the table, the domino searched is a 

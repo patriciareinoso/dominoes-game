@@ -40,7 +40,7 @@ public class Stock {
 	 */
 	public static final  int MAXSIZE = 28;
 	
-	public static final boolean INVARIANT = (MAXDOM > MINDOM) && (MAXSIZE > MINSIZE);
+	public static final boolean INVARIANT = (MAXDOM > MINDOM) && (MAXSIZE > MINSIZE) && MAXSIZE == Game.TOTALPIECES;
 
    /**
 	* Class constructor.
