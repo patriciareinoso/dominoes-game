@@ -1,9 +1,5 @@
 package generics.templates;
 
-import softwareGame.DominoInt;
-import generics.abstractions.PairAbstraction;
-import generics.abstractions.PairSpecification;
-
 public class GenericDomino<T> extends GenericPair<T> {
 	
 	public GenericDomino(T fst, T snd){

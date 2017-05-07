@@ -8,11 +8,7 @@ package softwareGame;
  * @since	2017-03-08
  */
 
-import generics.templates.GenericDomino;
-import generics.templates.GenericPair;
-
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class Hand {
 	
