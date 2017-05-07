@@ -40,7 +40,7 @@ public class DominoInt extends GenericDomino implements InterfaceDomino{
 	public static final int TOTAL = ((RANGE)*(RANGE+1))/2;
 	
 	/**
-	 * The class invariant checks that the {@link MAX} value is bigger than the {@link MIN} value.
+	 * The class invariant checks that the {@link MAX} value is bigger than the {@link #MIN} value.
 	 */
 	public static final boolean INVARIANT = (MAX > MIN);
 	
@@ -51,7 +51,7 @@ public class DominoInt extends GenericDomino implements InterfaceDomino{
 	 *
 	 * @param leftValue  the first value of the piece.
 	 * @param rightValue the second value of the piece.
-	 * @throws IllegalArgumentException when leftValue or rightValue are out range MIN .. MAX.
+	 * @throws IllegalArgumentException when leftValue or rightValue are out range {@link #MIN} .. {@link #MAX}
 	 * @throws InvariantBrokenException if the domino state is not valid after execution.
 	 */
 	public DominoInt(Integer leftValue, Integer rightValue) throws IllegalArgumentException, InvariantBrokenException{
@@ -69,7 +69,7 @@ public class DominoInt extends GenericDomino implements InterfaceDomino{
 
 	/**
 	 * Retrieve the left value of the domino piece. 
-	 * Implement the method {@link graphicInterface.InterfaceDomino#getLeftValue}
+	 * Implement the method {@link graphicInterface.InterfaceDomino#getLeftValue()}
 	 * in order to use the graphical interface. 
 	 * The left value corresponds to {@link generics.templates.GenericPair#first}.<br>
 	 * 
@@ -81,7 +81,7 @@ public class DominoInt extends GenericDomino implements InterfaceDomino{
 	}
 
 	/**
-	 * Implement the method {@link graphicInterface.InterfaceDomino#getRightValue}
+	 * Implement the method {@link graphicInterface.InterfaceDomino#getRightValue()}
 	 * in order to use the graphical interface. 
 	 * The left value corresponds to {@link generics.templates.GenericPair#second}.<br>
 	 * 
@@ -93,7 +93,7 @@ public class DominoInt extends GenericDomino implements InterfaceDomino{
 	}
 
 	/**
-	 * Check that the left and right values are in allowed range MIN .. MAX.<br>
+	 * Check that the left and right values are in allowed range {@link #MIN} .. {@link #MAX}.<br>
 	 * 
 	 * @return True if the domino is in a valid state. False otherwise.
 	 */
@@ -114,7 +114,7 @@ public class DominoInt extends GenericDomino implements InterfaceDomino{
 	 * 
 	 * @param obj Object assign to the left value.
 	 * @throws IllegalArgumentException if obj is null, is not an Integer or
-	 * is out of the range MIN .. MAX.
+	 * is out of the range {@link #MIN} .. {@link #MAX}.
 	 */
 	@Override
 	public void setFirst(Object obj) throws IllegalArgumentException{
@@ -135,7 +135,7 @@ public class DominoInt extends GenericDomino implements InterfaceDomino{
 	 * 
 	 * @param obj Object assign to the right value.
 	 * @throws IllegalArgumentException if obj is null, is not an Integer or
-	 * is out of the range MIN .. MAX.
+	 * is out of the range {@link #MIN} .. {@link #MAX}.
 	 */
 	@Override
 	public void setSecond(Object obj) throws IllegalArgumentException{
