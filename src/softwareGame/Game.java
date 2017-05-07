@@ -7,6 +7,8 @@ import graphicInterface.InterfaceGame;
 /**
 * Represent a 2-player traditional domino game.
 * With a Stock of {@link Stock#MAXSIZE} domino pieces.
+* At the begining of the game {@link #INITIALPIECES} are given to each player.
+* The first player that runs out of dominoes win.
 * The player may continue drawing from the stock until it is empty (even if he/
 * she possess an appropiate domino piece to play).
 * The player may jump only when the stock is empty and does not possess an 
@@ -165,9 +167,9 @@ public class Game implements InterfaceGame
 	 
 	 /**	
 	  * The class invariant checks that the {@link #MAXSTATE} value is bigger than 
-	  * the {@link #MINSTATE} value, {@link #MAXSIZE} value is bigger than the 
-	  * {@link #MINSIZE} and that the {@link #TOTALPIECES}, {@link Table#MAXSIZE}, 
-	  * {@link Stock#MAXSIZE} and {@link DominoInt.TOTAL} are consistent.
+	  * the {@link #MINSTATE} value, {@link #INITIALPIECES} value is appropiate to  
+	  * {@link #TOTALPIECES}, and that the {@link #TOTALPIECES}, {@link Table#MAXSIZE}, 
+	  * {@link Stock#MAXSIZE} and {@link DominoInt#TOTAL} are consistent.
 	  */
 	 public static final boolean INVARIANT = MAXSTATE > MINSTATE && 
 			 							    INITIALPIECES*2 <= TOTALPIECES && 
@@ -203,21 +205,22 @@ public class Game implements InterfaceGame
 	 }
    
     /**
-    * Method called when an event is produced in the graphical interface.
+    * Method called when an event is produced in the graphical interface.<br>
     * If val corresponds to {@link graphicInterface.GGame#DATA_NAME}, the player
-    * has inserted his/her name. The game is initialized.
+    * has inserted his/her name. The game is initialized.<br>
     * If val corresponds to {@link graphicInterface.GGame#PLAY}, the player has
-    * clicked on a domino pieces. The event is treated depending on {@link #indState}.
+    * clicked on a domino pieces. The event is treated depending on {@link #indState}.<br>
     * If val corresponds to {@link graphicInterface.GGame#JUMP}, the player has
-    * clicked on the Jump button. Check if the event is valid according to {@link #indState}.
+    * clicked on the Jump button. Check if the event is valid according to {@link #indState}.<br>
     * If val corresponds to {@link graphicInterface.GGame#DRAW}, the player has
-    * clicked on the Draw button. 
+    * clicked on the Draw button. <br>
     * if val corresponds to {@link graphicInterface.GGame#VALIDPCPLAY}, the player
     * has clicked on the Play PC button. Call methods to execute PC actions.<br>
+    * Other values are considered invalid.<br>
     * 
     * @param val indicate the action done by the user player.
     * @throws IllegalStateException if val does not correspond to the events 
-    * 		  in {@link graphicInterca.GGame} 
+    * 		  in {@link graphicInterface.GGame} 
     * @throws InvariantBrokenException if the Game state is not valid after execution.
     */
 	 public void receivedMessage(int val) throws IllegalStateException, InvariantBrokenException {
@@ -319,104 +322,104 @@ public class Game implements InterfaceGame
          } 
 	 }
    
-   /**
-    * Retrieve a end value of the table object. Use {@link Table#getEndValues()}.
-    * side == 1 corresponds to the left side of the table.
-    * side == 2 corresponds to the right side of the table <br>
-    * 
-    * @param side The side to be considered : 1 or 2.
-    * @return 	  The extremity value of the domino on the considered side 
-	* 			  the table. -1 if the table is empty.
-	* @throws IllegalArgumentException if side is not either 1 nor 2.
-    */
-   public int getEnd(int side) throws IllegalArgumentException {
-	   if (side != 1 && side != 2){
-		   throw new IllegalArgumentException("Illegal argument. Side must be 1 or 2.");
-	   }
-       if (table.isEmpty()){
-           return -1;
-       }
-       if (side == 1){
-           return table.getEndValues().getLeftValue();
-       }
-       else if (side == 2){
-           return table.getEndValues().getRightValue();
-       }
-       return -1;
-   }
+	 /**
+      * Retrieve a end value of the table object. Use {@link Table#getEndValues()}.
+      * side == 1 corresponds to the left side of the table.
+      * side == 2 corresponds to the right side of the table <br>
+      * 
+      * @param side The side to be considered : 1 or 2.
+      * @return 	  The extremity value of the domino on the considered side 
+	  * 			  the table. -1 if the table is empty.
+	  * @throws IllegalArgumentException if side is not either 1 nor 2.
+      */
+	 public int getEnd(int side) throws IllegalArgumentException {
+		 if (side != 1 && side != 2){
+			 throw new IllegalArgumentException("Illegal argument. Side must be 1 or 2.");
+		 }
+		 if (table.isEmpty()){
+			 return -1;
+		 }
+		 if (side == 1){
+			 return table.getEndValues().getLeftValue();
+		 }
+		 else if (side == 2){
+			 return table.getEndValues().getRightValue();
+		 }
+		 return -1;
+	 }
    
-   /**
-    * Take the selected domino, verify if can be put on the table.
-    * If it is ok, call {@link #treatAnswer(DominoInt)}. Otherwise send a message
-    * to the player.<br>
-    * 
-    * @param d The selected domino.
-    * @throws IllegalArgumentException if the domino is null or not valid.
-    */
-   public void treatDoubleAnswer(DominoInt d) throws IllegalArgumentException {
-	   if (d == null || !d.invariant() ){
-			throw new IllegalArgumentException("Illegal argument. Domino is null or invalid.");
-		}
-	   if  (table.isEmpty() || d.matches(getEnd(1),getEnd(2))){
-		   treatAnswer(d);
-	   }
-	   else{
-		   gGame.setMessage("This choice is not good.");
-	   }
-   }
+	 /**
+	  * Take the selected domino, verify if can be put on the table.
+      * If it is ok, call {@link #treatAnswer(DominoInt)}. Otherwise send a message
+      * to the player.<br>
+      * 
+      * @param d The selected domino.
+      * @throws IllegalArgumentException if the domino is null or not valid.
+      */
+	 public void treatDoubleAnswer(DominoInt d) throws IllegalArgumentException {
+		 if (d == null || !d.invariant() ){
+			 throw new IllegalArgumentException("Illegal argument. Domino is null or invalid.");
+		 }
+		 if (table.isEmpty() || d.matches(getEnd(1),getEnd(2))){
+			 treatAnswer(d);
+		 }
+		 else{
+			 gGame.setMessage("This choice is not good.");
+		 }
+	 }
 
-   /**
-    * When a player plays, d is removed from the hand of the player and put on
-    * the table. 
-	* Check if the player wins. Otherwise, call {@link #computerDecide()}. <br>
-	* 
-    * @param d The domino selected by the player.
-    * @throws IllegalArgumentException if the domino is null or not valid.
-    * @throws InvariantBrokenException if the Game state is not valid after execution.
-    */
-    public void treatAnswer(DominoInt d) throws IllegalArgumentException, InvariantBrokenException{
-    	if (d == null || !d.invariant()){
-			throw new IllegalArgumentException("Illegal argument. Domino is null or invalid.");
-		}
-        setButtons(-1);	
-        gGame.removeDominoFromHand(d);
-        gGame.putDominoOnTable(d);
-        player1.getHand().delete(d);
-        table.add(d);
-        System.out.println("\ntable :  " + table);
-        System.out.println("\ntable ends :  " + getEnd(1) + " - " + getEnd(2));
-        System.out.println("\nplayer's hand :  " + player1.getHand());
+	 /**
+      * When a player plays, d is removed from the hand of the player and put on
+      * the table. 
+	  * Check if the player wins. Otherwise, call {@link #computerDecide()}. <br>
+	  * 
+      * @param d The domino selected by the player.
+      * @throws IllegalArgumentException if the domino is null or not valid.
+      * @throws InvariantBrokenException if the Game state is not valid after execution.
+      */
+	 public void treatAnswer(DominoInt d) throws IllegalArgumentException, InvariantBrokenException{
+		 if (d == null || !d.invariant()){
+			 throw new IllegalArgumentException("Illegal argument. Domino is null or invalid.");
+		 }
+         setButtons(-1);	
+         gGame.removeDominoFromHand(d);
+         gGame.putDominoOnTable(d);
+         player1.getHand().delete(d);
+         table.add(d);
+         System.out.println("\ntable :  " + table);
+         System.out.println("\ntable ends :  " + getEnd(1) + " - " + getEnd(2));
+         System.out.println("\nplayer's hand :  " + player1.getHand());
         
-        if (!invariant()){
-			throw new InvariantBrokenException("Invariant broken.");
-		} 
+         if (!invariant()){
+        	 throw new InvariantBrokenException("Invariant broken.");
+         } 
         
-        if (player1.isWin()){
-			gGame.setMessage("CONGRATULATIONS. You WIN.");
-		}
-		else{
-			computerDecide();
-		}
-    }
+         if (player1.isWin()){
+        	 gGame.setMessage("CONGRATULATIONS. You WIN.");
+         }
+         else{
+        	 computerDecide();
+         }
+	 }
  
-	/**
-	* Method called when the player clicks on the Draw button.
-	* A domino piece from the stock is given to the player even if he/she
-	* possess an appropriate domino piece to play.
-	* If the stock is empty, the computer plays.
-	* otherwise the drawn domino is added to the hand and wait for the 
-	* next action of the player.
-	* The player may continue drawing from the stock until it is empty.<br>
-    * 
-	* @throws IllegalStateException if state is not on the values [7,8].
-	* @throws InvariantBrokenException if the Game state is not valid after execution.
-	*/
-	public void playerDraw() throws IllegalStateException, InvariantBrokenException{ 
+	 /**
+	  * Method called when the player clicks on the Draw button.
+	  * A domino piece from the stock is given to the player even if he/she
+	  * possess an appropriate domino piece to play.
+	  * If the stock is empty, the computer plays.
+	  * otherwise the drawn domino is added to the hand and wait for the 
+	  * next action of the player.
+	  * The player may continue drawing from the stock until it is empty.<br>
+      * 
+	  * @throws IllegalStateException if state is not on the values [7,8].
+	  * @throws InvariantBrokenException if the Game state is not valid after execution.
+	  */
+	 public void playerDraw() throws IllegalStateException, InvariantBrokenException{ 
 	
-        switch(indState){
-            case PLAYER_PLAYS:
-                if (stock.isEmpty()){
-                    setIndState(PLAYER_PLAYS_EMPTY_STOCK);
+		 switch(indState){
+		 	case PLAYER_PLAYS:
+		 		if (stock.isEmpty()){
+		 			setIndState(PLAYER_PLAYS_EMPTY_STOCK);
                     setButtons(PLAYER_PLAYS_EMPTY_STOCK);
                     gGame.setMessage("The stock is over. Please choose a domino or jump.");
                 }
@@ -442,31 +445,56 @@ public class Game implements InterfaceGame
 		} 
 	}
 	 
-	/**
-	 * The computer plays in relationship with the state of the game.
-	 * If state = n (with n =1,2,3,4,5,6) we look for a double n in the computer's hand.
-	 * If yes, the computer plays else the player is asked to play the double domino (n-1).
-	 * If n=0 we look for a double 0 in the computer's hand.
-	 * If yes, the computer plays, otherwise the player is asked to play any other domino.
-	 * If n=9, the pc can play a domino piece.
-     * If n=10, the pc can not play. The pc draws from the stock.
-	 * If n=11 the pc is blocked.
-     * If n=12 the pc can play but the stock is empty.
-     * @throws IllegalStateException if state is not on the values [0..6,9-12].
-     * @throws InvariantBrokenException if the Game state is not valid after execution.
-	 */
-   	public void computerPlay() throws IllegalStateException, InvariantBrokenException {
+	 /**
+	  * The computer plays according to the state of the game.
+	  * If {@link #indState} == {@link #DOUBLE1} or
+	  *    {@link #indState} == {@link #DOUBLE2} or
+	  *    {@link #indState} == {@link #DOUBLE3} or
+	  *    {@link #indState} == {@link #DOUBLE4} or
+	  *    {@link #indState} == {@link #DOUBLE5} or
+	  *    {@link #indState} == {@link #DOUBLE6} we look for a double n on the PC's hand.
+	  *    If the double is found, it is played. Otherwise the PC jump and it is
+	  *    time to find the next double.<br>
+	  *   
+	  * If {@link #indState} == {@link #DOUBLE0} we look for double 0 on the PC's hand.
+	  *    If found, it is played. Otherwise, the PC jump and its the player's turn.<br>
+	  * 
+	  * If {@link #indState} == {@link #PC_PLAYS}, the PC has a domino to play.
+	  *    If in fact it can not play, an IllegalStateException is raised.
+	  *    If the PC runs out of dominoes, indicates the winning state.<br>
+	  * 
+	  * If {@link #indState} == {@link #PC_PLAYS_DRAWS}, the PC can not play. The PC draws.
+	  *    and tries to play again.<br>
+	  * 
+	  * If {@link #indState} == {@link #PC_BLOCKED}, the PC is blocked. It is the
+	  *    player's turn.<br>
+	  * 
+	  * If {@link #indState} == {@link #PC_PLAYS_EMPTY_STOCK}, the PC can play a domino.
+	  *    If in fact it can not play, an IllegalStateException is raised.
+	  *    If the PC runs out of dominoes, indicates the winning state.<br>
+	  * 
+	  * Other values for {@link #indState} are considered illegal states.
+	  * Set the buttons according to the next expected event.
+	  * <br>
+	  * 
+      * @throws IllegalStateException if state is different from {@link #DOUBLE0},
+      * {@link #DOUBLE1},{@link #DOUBLE2},{@link #DOUBLE3},{@link #DOUBLE4},
+      * {@link #DOUBLE5},{@link #DOUBLE6},{@link #PC_PLAYS},{@link #PC_PLAYS_DRAWS},
+      * {@link #PC_BLOCKED}, {@link #PC_PLAYS_EMPTY_STOCK}.
+      * @throws InvariantBrokenException if the Game state is not valid after execution.
+	  */
+	 public void computerPlay() throws IllegalStateException, InvariantBrokenException {
    		
-        System.out.println("\nstate:"+indState+ ". Computer plays");
-        DominoInt d = null;
+		 System.out.println("\nstate:"+indState+ ". Computer plays");
+         DominoInt d = null;
 
-        switch (indState){
+         switch (indState){
             // Searching for the first double
-            case DOUBLE1: case DOUBLE2: case DOUBLE3: case DOUBLE4: case DOUBLE5: case DOUBLE6:
-                d = pc.getHand().thereIs(indState,indState, true);
+         	case DOUBLE1: case DOUBLE2: case DOUBLE3: case DOUBLE4: case DOUBLE5: case DOUBLE6:
+         		d = pc.getHand().thereIs(indState,indState, true);
                 // The PC has the double searched.
-                if (d != null){
-                    pc.getHand().delete(d); 
+         		if (d != null){
+         			pc.getHand().delete(d); 
                     gGame.putDominoOnTable(d);
                     table.add(d);
                     
@@ -504,6 +532,9 @@ public class Game implements InterfaceGame
             case PC_PLAYS:
                 // The PC has a domino piece to play.
                 d = pc.getHand().thereIs(getEnd(1),getEnd(2),false);
+                if (d == null){
+                	throw new IllegalStateException("Illegal state");
+                }
                 pc.getHand().delete(d); 
                 gGame.putDominoOnTable(d);
                 table.add(d);
@@ -536,6 +567,9 @@ public class Game implements InterfaceGame
             case PC_PLAYS_EMPTY_STOCK:
                 // The PC can play. The Stock is empty
                 d = pc.getHand().thereIs(getEnd(1),getEnd(2),false);
+                if (d == null){
+                	throw new IllegalStateException("Illegal state");
+                }
                 gGame.putDominoOnTable(d);
                 pc.getHand().delete(d); 
                 table.add(d);
@@ -555,20 +589,24 @@ public class Game implements InterfaceGame
             	throw new IllegalStateException("Illegal state.");
         }
 
-	System.out.println("\ntable :  " + table);
-    System.out.println("\ntable ends :  " + getEnd(1) + " - " + getEnd(2));
-    System.out.println("\nPC hand :" + pc.getHand());
-    if (!invariant()){
-		throw new InvariantBrokenException("Invariant broken.");
-	} 
+         System.out.println("\ntable :  " + table);
+         System.out.println("\ntable ends :  " + getEnd(1) + " - " + getEnd(2));
+         System.out.println("\nPC hand :" + pc.getHand());
+         if (!invariant()){
+        	 throw new InvariantBrokenException("Invariant broken.");
+         } 
    }
 
 	/**
-	 * To verify that the player does not cheat when clicking on the Jump button.
+	 * Verify that the player does not cheat when clicking on the Jump button.
 	 * A player can Jump only when he/she does not possess the double searched,
 	 * Or when he/she does not possess a piece that matches any of the ends of 
-	 * the table and the stock is empty.
-	 * @throws IllegalStateException if state is not on the values [0..6,7,8,13].
+	 * the table and the stock is empty.<br>
+	 * 
+	 * @throws IllegalStateException if state is different from {@link #DOUBLE0},
+     * {@link #DOUBLE1},{@link #DOUBLE2},{@link #DOUBLE3},{@link #DOUBLE4},
+     * {@link #DOUBLE5},{@link #DOUBLE6},{@link #PLAYER_PLAYS},
+     * {@link #PLAYER_PLAYS_EMPTY_STOCK},{@link #PLAYER_PLAYS_PC_BLOCKED}.
 	 */
    public void treatJumpAnswer() throws IllegalStateException{
 	   
@@ -618,17 +656,28 @@ public class Game implements InterfaceGame
 
 	/**
 	 * Prepare the game for the PC. Verify if it is possible for the PC to 
-	 * put a domino piece on the table and change the indState properly.
+	 * put a domino piece on the table and change the {@link #indState} properly.
 	 * Send the appropriate message to the player and ask to click on the 
-	 * Play PC button to validate the action.
-	 * @throws IllegalStateException if state is not on the values [0..6,7,8,10,13].
-	 * @throws InvariantBrokenException if the Game state is not valid after execution.
+	 * Ask the user to click on Play PC button to execute the action.<br>
+	 * 
+	 * Only states {@link #DOUBLE0}, {@link #DOUBLE1},{@link #DOUBLE2},
+	 * {@link #DOUBLE3},{@link #DOUBLE4}, {@link #DOUBLE5},{@link #DOUBLE6}, 
+	 * {@link #PLAYER_PLAYS}, {@link #PC_PLAYS_DRAWS}, 
+	 * {@link #PLAYER_PLAYS_EMPTY_STOCK}, {@link #PLAYER_PLAYS_PC_BLOCKED} are valid. 
+	 * If the PC can play, let it put the domino piece.
+	 * Otherwise, its the player turn.<br>
+	 * 
+	 * @throws IllegalStateException if state is different from {@link #DOUBLE0},
+     * {@link #DOUBLE1},{@link #DOUBLE2},{@link #DOUBLE3},{@link #DOUBLE4},
+     * {@link #DOUBLE5},{@link #DOUBLE6}, {@link #PLAYER_PLAYS}, {@link #PC_PLAYS_DRAWS},
+     * {@link #PLAYER_PLAYS_EMPTY_STOCK}, {@link #PLAYER_PLAYS_PC_BLOCKED}.
+     * @throws InvariantBrokenException if the Game state is not valid after execution.
 	 */
     public void computerDecide() throws IllegalStateException, InvariantBrokenException {
     	DominoInt d;
         switch(indState){
             // Searching for the first double to put on the table.
-            case DOUBLE0: case 1: case DOUBLE2: case DOUBLE3: case DOUBLE4: case DOUBLE5: case DOUBLE6:
+            case DOUBLE0: case DOUBLE1: case DOUBLE2: case DOUBLE3: case DOUBLE4: case DOUBLE5: case DOUBLE6:
             	
             	d = pc.getHand().thereIs(indState,indState,true);
                 if (d != null){
@@ -707,10 +756,28 @@ public class Game implements InterfaceGame
 
 	/**
 	 * Enable the Jump, Draw, Play PC and Hand buttons according to the state.
-     * States 0-6, 8, 13 allow only to jump.
-     * 7 allows only to draw.
-     * 10 allows only to computer play.
-     * -1 blocks all the buttons.
+     * 
+     * If {@link #indState} == {@link #DOUBLE1} or
+	 *    {@link #indState} == {@link #DOUBLE2} or
+	 *    {@link #indState} == {@link #DOUBLE3} or
+	 *    {@link #indState} == {@link #DOUBLE4} or
+	 *    {@link #indState} == {@link #DOUBLE5} or
+	 *    {@link #indState} == {@link #DOUBLE6} or
+	 *    {@link #indState} == {@link #PLAYER_PLAYS_EMPTY_STOCK} or
+	 *    {@link #indState} == {@link #PLAYER_PLAYS_PC_BLOCKED} enables only 
+	 *    the jump button and clicking the dominoes.Block the rest.<br>
+	 *    
+	 * If {@link #indState} == {@link #PLAYER_PLAYS}, enable Draw button and 
+	 * 	  clicking the dominoes. Block the rest.<br>
+	 *   
+	 * If {@link #indState} == {@link #PC_PLAYS_DRAWS}, enable Play PC button. 
+	 *    Block the rest. <br>
+	 * 
+	 * If {@link #indState} == -1, block all the buttons. 
+	 *    Block the rest.<br>
+	 *    
+	 * Other values for state are considered illegal.<br>
+     * 
      * @param state value to indicate block or enable the appropriate buttons.
      * @throws IllegalStateException if state is not on the values [-1..13].
 	 */
@@ -755,6 +822,8 @@ public class Game implements InterfaceGame
 	  * Check that the amount of pieces that are distributed on the stock,
 	  * the table, and the hands of the players, keeps constant to {@link #TOTALPIECES}.
 	  * Check that the stock's and table's invariant are not broken.
+	  * 
+	  * @return True if the Game is in a valid state. False otherwise.
 	  * */
 	 public boolean invariant(){
 		 return ((stock.getSize() + table.getSize() + player1.getHand().getSize() + pc.getHand().getSize() == TOTALPIECES) &&
@@ -764,7 +833,7 @@ public class Game implements InterfaceGame
 				 //player1.getHand().invariant() &&
 				 //pc.getHand().invariant() &&
 				 );
-		 //if the table is not empty, indState different from 0..6
+		 		//if the table is not empty, indState different from 0..6
 	 }
 	 
     public static void main(String [] args){
