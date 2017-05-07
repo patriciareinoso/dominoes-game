@@ -1,18 +1,14 @@
 package softwareGame;
 
 /**
- * Class that represent a hand of the Domino Game.
- * Handle the list of domino pieces that belong to a player.
- * @author	Patricia REINOSO
- * @version 1.1.0
- * @since	2017-03-08
- */
-
-import generics.templates.GenericDomino;
-import generics.templates.GenericPair;
+* Class that represent a hand of the Domino Game.
+* Handle the list of domino pieces that belong to a player.
+* @author	Patricia REINOSO
+* @version 1.1.1
+* @since	2017-03-08
+*/
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class Hand {
 	
@@ -27,9 +23,10 @@ public class Hand {
 		myHand = new ArrayList<DominoInt>();
 	}
 
-	
 	/**
 	 * Add a domino piece to the hand.
+	 * The domino pice to add must not be null.<br>
+	 * 
 	 * @param domino the domino piece to be added.
 	 * @throws IllegalArgumentException if the domino is null or not valid.
 	 */
@@ -42,7 +39,8 @@ public class Hand {
 
 	/**
 	 * Remove a domino piece from the hand.
-	 * If the domino piece is not in the hand no exception is raised.
+	 * If the domino piece is not in the hand no exception is raised.<br>
+	 * 
 	 * @param domino the domino piece to remove from the hand.
 	 * @throws IllegalArgumentException if the domino is null or not valid.
 	 * @throws IllegalStateException if the Hand is empty.
@@ -58,19 +56,21 @@ public class Hand {
 	}
 
 	/**
-	 * Retrieve the hand of the player.
 	 * @return the list corresponding to the hand.
 	 */
 	public ArrayList<DominoInt> getMyHand(){
 		return myHand;
 	}
 	
+	/**
+	 * @return String representation of the hand.  It consists on the list of
+	 * dominoes separated by ",".
+	 */
 	public String toString(){
 		return myHand.toString();
 	}
 
 	/**
-	 * Retrieve the size of the hand.
 	 * @return the size of the hand.
 	 */
 	public int getSize(){
@@ -78,7 +78,6 @@ public class Hand {
 	}
 
 	/**
-	 * Indicate if the hand is empty or not.
 	 * @return true if the hand is empty, false otherwise.
 	 */
 	public boolean isEmpty(){
@@ -86,7 +85,8 @@ public class Hand {
 	}
 
 	/**
-	 * Set the hand from a given list of dominoes.
+	 * Set the hand from a given list of dominoes.<br>
+	 * 
 	 * @param myHand the hand to be set.
 	 * @throws IllegalArgumentException if myHand is null.
 	 */
@@ -100,9 +100,8 @@ public class Hand {
 	/**
 	 * Retrieve an appropriate domino piece to play.
 	 * Method used by the computer. 
-	 * Consider the fact that if none of the players possess any double
-	 * to do the first move, the user player is the one who puts the first piece 
-	 * on the table.
+	 * Take into account the fact that if none of the players possess any double
+	 * to do the first move, the first piece is not placed by the computer.
 	 * If it is the first piece to put on the table, the domino searched is a 
 	 * double and leftVal and rightVal are equal. 
 	 * If not, leftVal and rightVal represent the ends of the table, and one of
@@ -114,7 +113,7 @@ public class Hand {
 	 *					False otherwise
 	 * @return			an appropriate domino piece to play. If there is no 
 	 *					appropriate piece to play, null.
-	 *@throws IllegalArgumentException if first is true and leftVal and rightVal are different.
+	 * @throws IllegalArgumentException if first is true and leftVal and rightVal are different.
 	 */
 	public DominoInt thereIs(int leftVal, int rightVal, boolean first) throws IllegalStateException{
 

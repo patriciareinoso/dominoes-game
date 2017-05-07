@@ -2,8 +2,14 @@ package softwareGame;
 
 /**
  * Representation of the pieces on stock of a standard domino game.
+ * The maximum number of domino pieces that it may contain must
+ * be consistent with {@link DominoInt#TOTAL}.
+ * Handle the list of domino pieces that have not been drawn to the players.
+ * This class is implemented following the Singleton design pattern in order to guarantee the creation
+ * of only one instance of the class.<br>
+ * 
  * @author	Patricia REINOSO
- * @version 2.1.0
+ * @version 2.1.1
  * @since	2017-03-08
  */
 
@@ -35,17 +41,25 @@ public class Stock {
 	public static final int MINSIZE = 0;
 	
 	/**
-	 * Maximum value of the size of the stock is when none of the
+	 * Maximum value of the size of the stock. Value reach when none of the
 	 * domino pieces has been drawn to the players.
+	 * Must be consistent to the total amount of domino pieces {@link DominoInt#TOTAL} .
 	 */
-	public static final  int MAXSIZE = 28;
+	public static final  int MAXSIZE = DominoInt.TOTAL;
 	
-	public static final boolean INVARIANT = (MAXDOM > MINDOM) && (MAXSIZE > MINSIZE) && MAXSIZE == Game.TOTALPIECES;
+	/**
+	 * The class invariant checks that the {@link #MAXDOM} value is bigger than 
+	 * the {@link #MINDOM} value, {@link #MAXSIZE} value is bigger than the 
+	 * {@link #MINSIZE} and that the {@link #MAXSIZE} and {@link DominoInt#TOTAL} 
+	 * are consistent.<br>
+	 */
+	public static final boolean INVARIANT = (MAXDOM > MINDOM) && (MAXSIZE > MINSIZE) && MAXSIZE == DominoInt.TOTAL;
 
    /**
 	* Class constructor.
-	* Create the 28 standard pieces of the game and add them the stock.
-	* @throw InvariantBrokenException if the Stock state is not valid after execution.
+	* Create the {@link DominoInt#TOTAL} standard pieces of {@link DominoInt} and add them the stock.<br>
+	* 
+	* @throws InvariantBrokenException if the Stock state is not valid after execution.
 	*/
 	private Stock() throws InvariantBrokenException{
 		
@@ -62,10 +76,16 @@ public class Stock {
 		}
 	}
 	
+	/**
+	 * Initializes the unique instance of the Stock.
+	 * */
 	private static class StockHolder{
 		private static final Stock INSTANCE = new Stock();
 	}
 	
+	/**
+	 * @return the unique instance of Table.
+	 */
 	public static Stock getInstance(){
 		return StockHolder.INSTANCE;
 	}
@@ -77,16 +97,21 @@ public class Stock {
 		return pieces;
 	}
 	
+	/**
+	 * @return String representation of the stock. It consists on the list of
+	 * dominoes separated by ",".
+	 */
 	public String toString(){
 		return pieces.toString();
 	}
 
 	/**
 	 * Get a domino from the stock. The piece is selected
-	 * randomly and the removed from the stock.
+	 * randomly and the removed from the stock.<br>
+	 * 
 	 * @return the piece drawn from the stock.
 	 * @throws IllegalStateException if the Stock is empty.
-	 * @throw InvariantBrokenException if the Stock state is not valid after execution.
+	 * @throws InvariantBrokenException if the Stock state is not valid after execution.
 	 */
 	public DominoInt draw() throws IllegalStateException, InvariantBrokenException{
 		if (isEmpty()){
@@ -103,7 +128,6 @@ public class Stock {
 	}
 
 	/**
-	 * Retrieve the size of the stock.
 	 * @return the integer size of the stock.
 	 */
 	public int getSize(){
@@ -120,7 +144,8 @@ public class Stock {
 	
 	/**
 	 * Check if the size of the stock is between the limits.
-	 * Check if all the pieces on the Stock are valid. 
+	 * Check if all the pieces on the Stock are valid. <br>
+	 * 
 	 * @return True if the stock is in a valid state. False otherwise.
 	 */
 	public boolean invariant()  {

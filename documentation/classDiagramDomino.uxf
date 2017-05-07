@@ -27,18 +27,32 @@
     <coordinates>
       <x>279</x>
       <y>117</y>
-      <w>243</w>
-      <h>333</h>
+      <w>279</w>
+      <h>540</h>
     </coordinates>
     <panel_attributes>Game
 --
 - indState:Integer
 - stateMeaning: [String]
++ DOUBLE0: Integer
++ DOUBLE1: Integer
++ DOUBLE2: Integer
++ DOUBLE3: Integer
++ DOUBLE4: Integer
++ DOUBLE5: Integer
++ DOUBLE6: Integer
 + INITIALPIECES: Integer
-+ TOTALPIECES: Integer
-+ MINSTATE: Integer
-+ MAXSTATE: Integer
 + INVARIANT: Boolean
++ MAXSTATE: Integer
++ MINSTATE: Integer
++ PLAYER_PLAYS: Integer
++ PLAYER_PLAYS_EMPTY_STOCK: Integer
++ PLAYER_PLAYS_PC_BLOCKED: Integer
++ PC_BLOCKED: Integer
++ PC_PLAYS: Integer
++ PC_PLAYS_DRAWS: Integer
++ PC_PLAYS_EMPTY_STOCK: Integer
++ TOTALPIECES: Integer
 --
 + computerDecide()
 + computerPlay()
@@ -59,7 +73,7 @@
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
       <x>189</x>
-      <y>765</y>
+      <y>999</y>
       <w>387</w>
       <h>207</h>
     </coordinates>
@@ -84,7 +98,7 @@ thereIs(leftVal:Integer,rightVal:Integer)
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
       <x>306</x>
-      <y>549</y>
+      <y>765</y>
       <w>189</w>
       <h>135</h>
     </coordinates>
@@ -172,14 +186,14 @@ m2= *</panel_attributes>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>549</x>
-      <y>855</y>
-      <w>449</w>
-      <h>44</h>
+      <y>927</y>
+      <w>602</w>
+      <h>206</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 m1= 0..1
 m2=*</panel_attributes>
-    <additional_attributes>27;27;432;27</additional_attributes>
+    <additional_attributes>27;189;585;189;585;27</additional_attributes>
   </element>
   <element>
     <type>com.baselet.element.old.element.Relation</type>
@@ -198,36 +212,36 @@ m2=  *</panel_attributes>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>333</x>
-      <y>657</y>
+      <y>873</y>
       <w>98</w>
-      <h>125</h>
+      <h>143</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=  1
 m2=  1
 owns &gt;</panel_attributes>
-    <additional_attributes>54;27;54;108</additional_attributes>
+    <additional_attributes>54;27;54;126</additional_attributes>
   </element>
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>324</x>
-      <y>423</y>
+      <y>630</y>
       <w>118</w>
-      <h>143</h>
+      <h>152</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=  1
 m2=  2
 is played&gt;</panel_attributes>
-    <additional_attributes>63;27;63;126</additional_attributes>
+    <additional_attributes>63;27;63;135</additional_attributes>
   </element>
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>495</x>
+      <x>531</x>
       <y>189</y>
-      <w>269</w>
+      <w>233</w>
       <h>63</h>
     </coordinates>
     <panel_attributes>lt=-
@@ -235,21 +249,21 @@ m1= 1
 m2= 1
 
 has &gt;</panel_attributes>
-    <additional_attributes>27;45;252;45</additional_attributes>
+    <additional_attributes>27;45;216;45</additional_attributes>
   </element>
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>495</x>
+      <x>531</x>
       <y>81</y>
-      <w>609</w>
+      <w>573</w>
       <h>296</h>
     </coordinates>
     <panel_attributes>lt=-
 m1= 1
 m2= 1
 inlcudes&gt;</panel_attributes>
-    <additional_attributes>27;45;558;45;558;279</additional_attributes>
+    <additional_attributes>27;45;522;45;522;279</additional_attributes>
   </element>
   <element>
     <type>com.baselet.element.old.element.Note</type>
