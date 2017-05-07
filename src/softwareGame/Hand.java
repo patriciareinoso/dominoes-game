@@ -1,12 +1,12 @@
 package softwareGame;
 
 /**
- * Class that represent a hand of the Domino Game.
- * Handle the list of domino pieces that belong to a player.
- * @author	Patricia REINOSO
- * @version 1.1.1
- * @since	2017-03-08
- */
+* Class that represent a hand of the Domino Game.
+* Handle the list of domino pieces that belong to a player.
+* @author	Patricia REINOSO
+* @version 1.1.1
+* @since	2017-03-08
+*/
 
 import java.util.ArrayList;
 

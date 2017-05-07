@@ -3,7 +3,7 @@ package softwareGame;
 /**
  * Represent each piece of the Domino Game. 
  * Extends {@link generics.templates.GenericDomino} in order to create domino chips
- * of a standard domino set.<br>
+ * of a standard domino set.
  * Implements the {@link graphicInterface.InterfaceDomino} in order to use the graphical interface.
  * The value of each side of the Domino piece is between MIN and MAX.<br>
  * Domino x:y is equal to Domino y:x <br>

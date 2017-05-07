@@ -7,10 +7,10 @@ import graphicInterface.InterfaceGame;
 /**
 * Represent a 2-player traditional domino game.
 * With a Stock of {@link Stock#MAXSIZE} domino pieces.
-* At the begining of the game {@link #INITIALPIECES} are given to each player.
+* At the beginning of the game {@link #INITIALPIECES} are given to each player.
 * The first player that runs out of dominoes win.
 * The player may continue drawing from the stock until it is empty (even if he/
-* she possess an appropiate domino piece to play).
+* she possess an appropriate domino piece to play).
 * The player may jump only when the stock is empty and does not possess an 
 * appropriate domino piece to play. And when looking for the first double domino to 
 * put on the table. <br>
@@ -324,8 +324,8 @@ public class Game implements InterfaceGame
    
 	 /**
       * Retrieve a end value of the table object. Use {@link Table#getEndValues()}.
-      * side == 1 corresponds to the left side of the table.
-      * side == 2 corresponds to the right side of the table <br>
+      * side is equal to 1 corresponds to the left side of the table.
+      * side is equal to 2 corresponds to the right side of the table <br>
       * 
       * @param side The side to be considered : 1 or 2.
       * @return 	  The extremity value of the domino on the considered side 
@@ -411,7 +411,8 @@ public class Game implements InterfaceGame
 	  * next action of the player.
 	  * The player may continue drawing from the stock until it is empty.<br>
       * 
-	  * @throws IllegalStateException if state is not on the values [7,8].
+	  * @throws IllegalStateException if state is not {@link #PLAYER_PLAYS} or
+	  * 	    {@link #PLAYER_PLAYS_EMPTY_STOCK}
 	  * @throws InvariantBrokenException if the Game state is not valid after execution.
 	  */
 	 public void playerDraw() throws IllegalStateException, InvariantBrokenException{ 
@@ -447,12 +448,12 @@ public class Game implements InterfaceGame
 	 
 	 /**
 	  * The computer plays according to the state of the game.
-	  * If {@link #indState} == {@link #DOUBLE1} or
-	  *    {@link #indState} == {@link #DOUBLE2} or
-	  *    {@link #indState} == {@link #DOUBLE3} or
-	  *    {@link #indState} == {@link #DOUBLE4} or
-	  *    {@link #indState} == {@link #DOUBLE5} or
-	  *    {@link #indState} == {@link #DOUBLE6} we look for a double n on the PC's hand.
+	  * If {@link #indState} is equal to {@link #DOUBLE1} , 
+	  *    {@link #indState} is equal to {@link #DOUBLE2} , 
+	  *    {@link #indState} is equal to {@link #DOUBLE3} , 
+	  *    {@link #indState} is equal to {@link #DOUBLE4} , 
+	  *    {@link #indState} is equal to {@link #DOUBLE5} , 
+	  *    {@link #indState} is equal to {@link #DOUBLE6} we look for a double n on the PC's hand.
 	  *    If the double is found, it is played. Otherwise the PC jump and it is
 	  *    time to find the next double.<br>
 	  *   
@@ -757,23 +758,23 @@ public class Game implements InterfaceGame
 	/**
 	 * Enable the Jump, Draw, Play PC and Hand buttons according to the state.
      * 
-     * If {@link #indState} == {@link #DOUBLE1} or
-	 *    {@link #indState} == {@link #DOUBLE2} or
-	 *    {@link #indState} == {@link #DOUBLE3} or
-	 *    {@link #indState} == {@link #DOUBLE4} or
-	 *    {@link #indState} == {@link #DOUBLE5} or
-	 *    {@link #indState} == {@link #DOUBLE6} or
-	 *    {@link #indState} == {@link #PLAYER_PLAYS_EMPTY_STOCK} or
-	 *    {@link #indState} == {@link #PLAYER_PLAYS_PC_BLOCKED} enables only 
+     * If {@link #indState} is equal to {@link #DOUBLE1} , 
+	 *    {@link #indState} is equal to {@link #DOUBLE2} , 
+	 *    {@link #indState} is equal to {@link #DOUBLE3} , 
+	 *    {@link #indState} is equal to {@link #DOUBLE4} , 
+	 *    {@link #indState} is equal to {@link #DOUBLE5} , 
+	 *    {@link #indState} is equal to {@link #DOUBLE6} , 
+	 *    {@link #indState} is equal to {@link #PLAYER_PLAYS_EMPTY_STOCK} or
+	 *    {@link #indState} is equal to {@link #PLAYER_PLAYS_PC_BLOCKED} enables only 
 	 *    the jump button and clicking the dominoes.Block the rest.<br>
 	 *    
-	 * If {@link #indState} == {@link #PLAYER_PLAYS}, enable Draw button and 
+	 * If {@link #indState} is equal to {@link #PLAYER_PLAYS}, enable Draw button and 
 	 * 	  clicking the dominoes. Block the rest.<br>
 	 *   
-	 * If {@link #indState} == {@link #PC_PLAYS_DRAWS}, enable Play PC button. 
+	 * If {@link #indState} is equal to {@link #PC_PLAYS_DRAWS}, enable Play PC button. 
 	 *    Block the rest. <br>
 	 * 
-	 * If {@link #indState} == -1, block all the buttons. 
+	 * If {@link #indState} is equal to -1, block all the buttons. 
 	 *    Block the rest.<br>
 	 *    
 	 * Other values for state are considered illegal.<br>
