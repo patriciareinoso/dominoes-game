@@ -96,7 +96,7 @@ public class GGame extends JFrame
 	
 	public void addDominoInHand(InterfaceDomino d)
     {
-		String imageName = "imagesDominos/"+d.getLeftValue()+"-"+
+		String imageName = "src/imagesDominos/"+d.getLeftValue()+"-"+
 							d.getRightValue()+".jpg";
 		ImageDomino image = new ImageDomino(imageName,this,d);
 		gHand.addDomino(image);
@@ -157,14 +157,14 @@ public class GGame extends JFrame
 			 
 		if (gameZone.noDomino()) // no domino on the table
 			{
-				String nomImage = "imagesDominos/"+d.getLeftValue()+"-"+d.getRightValue()+".jpg";
+				String nomImage = "src/imagesDominos/"+d.getLeftValue()+"-"+d.getRightValue()+".jpg";
 				ImageDomino image = new ImageDomino(nomImage);
 				
 				gameZone.addFirstDomino(image,d.getLeftValue(),d.getRightValue());
 			}
 		else if(d.getLeftValue()==leftEnd)
 	    	{
-	    		String nomImage = "imagesDominos/"+d.getRightValue()+"-"+d.getLeftValue()+".jpg";
+	    		String nomImage = "src/imagesDominos/"+d.getRightValue()+"-"+d.getLeftValue()+".jpg";
 	    		ImageDomino image = new ImageDomino(nomImage);
 	    		
 	    		gameZone.addDominoLeft(image,d.getRightValue());
@@ -172,14 +172,14 @@ public class GGame extends JFrame
 	    	}
 	    else if(d.getLeftValue()==rightEnd)
 	    	{
-	    		String nomImage = "imagesDominos/"+d.getLeftValue()+"-"+d.getRightValue()+".jpg";
+	    		String nomImage = "src/imagesDominos/"+d.getLeftValue()+"-"+d.getRightValue()+".jpg";
 	    		ImageDomino image = new ImageDomino(nomImage);
 	    		
 	    		gameZone.addDominoRight(image,d.getRightValue());
 	    	}
 	    else if(d.getRightValue()==leftEnd)
 	    	{
-	    		String nomImage = "imagesDominos/"+d.getLeftValue()+"-"+d.getRightValue()+".jpg";
+	    		String nomImage = "src/imagesDominos/"+d.getLeftValue()+"-"+d.getRightValue()+".jpg";
 	    		ImageDomino image = new ImageDomino(nomImage);
 	    		
 	    		gameZone.addDominoLeft(image,d.getLeftValue());
@@ -187,7 +187,7 @@ public class GGame extends JFrame
 	    	}
 	    else 
 	    	{
-	    		String nomImage = "imagesDominos/"+d.getRightValue()+"-"+d.getLeftValue()+".jpg";
+	    		String nomImage = "src/imagesDominos/"+d.getRightValue()+"-"+d.getLeftValue()+".jpg";
 	    		ImageDomino image = new ImageDomino(nomImage);
 	    		
 	    		gameZone.addDominoRight(image,d.getLeftValue());
@@ -210,7 +210,7 @@ public class GGame extends JFrame
 		
 		if (gameZone.noDomino()) // no domino on the table
 		{
-			String imageName = "imagesDominos/"+d.getLeftValue()+"-"+d.getRightValue()+".jpg";
+			String imageName = "src/imagesDominos/"+d.getLeftValue()+"-"+d.getRightValue()+".jpg";
 			ImageDomino image = new ImageDomino(imageName);
 			
 			gameZone.addFirstDomino(image,d.getLeftValue(),d.getRightValue());
@@ -218,7 +218,7 @@ public class GGame extends JFrame
 		}
 		else if(d.getLeftValue()==leftEnd)
     	{
-    		String imageName = "imagesDominos/"+d.getRightValue()+"-"+d.getLeftValue()+".jpg";
+    		String imageName = "src/imagesDominos/"+d.getRightValue()+"-"+d.getLeftValue()+".jpg";
     		ImageDomino image = new ImageDomino(imageName);
     		
     		gameZone.addDominoLeft(image,d.getRightValue());
@@ -226,7 +226,7 @@ public class GGame extends JFrame
     	else 
     	if(d.getRightValue()==leftEnd)
         {
-        	String imageName = "imagesDominos/"+d.getLeftValue()+"-"+d.getRightValue()+".jpg";
+        	String imageName = "src/imagesDominos/"+d.getLeftValue()+"-"+d.getRightValue()+".jpg";
         	ImageDomino image = new ImageDomino(imageName);
         	
         	gameZone.addDominoLeft(image,d.getLeftValue());
@@ -248,7 +248,7 @@ public class GGame extends JFrame
 	
 		if (gameZone.noDomino()) // no domino on the table
 		{
-			String imageName = "imagesDominos/"+d.getLeftValue()+"-"+d.getRightValue()+".jpg";
+			String imageName = "src/imagesDominos/"+d.getLeftValue()+"-"+d.getRightValue()+".jpg";
 			ImageDomino image = new ImageDomino(imageName);
 			
 			gameZone.addFirstDomino(image,d.getLeftValue(),d.getRightValue());
@@ -257,7 +257,7 @@ public class GGame extends JFrame
 		
     	else if(d.getLeftValue()==rightEnd)
     	{
-    		String imageName = "imagesDominos/"+d.getLeftValue()+"-"+d.getRightValue()+".jpg";
+    		String imageName = "src/imagesDominos/"+d.getLeftValue()+"-"+d.getRightValue()+".jpg";
     		ImageDomino image = new ImageDomino(imageName);
     		
     		gameZone.addDominoRight(image,d.getRightValue());
@@ -265,7 +265,7 @@ public class GGame extends JFrame
     	
     	else  if(d.getRightValue()==rightEnd)
     	{
-    		String imageName = "imagesDominos/"+d.getRightValue()+"-"+d.getLeftValue()+".jpg";
+    		String imageName = "src/imagesDominos/"+d.getRightValue()+"-"+d.getLeftValue()+".jpg";
     		ImageDomino image = new ImageDomino(imageName);
     		gameZone.addDominoRight(image,d.getLeftValue());
     	}
@@ -280,7 +280,7 @@ public class GGame extends JFrame
 	 */
 	public void removeDominoFromHand(InterfaceDomino d)
 	{
-		String imageName = "imagesDominos/"+d.getLeftValue()+"-"+
+		String imageName = "src/imagesDominos/"+d.getLeftValue()+"-"+
 								d.getRightValue()+".jpg";
 		ImageDomino image = new ImageDomino(imageName,this,d);
 		gHand.removeDomino(image);

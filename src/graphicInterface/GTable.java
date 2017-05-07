@@ -117,7 +117,7 @@ import javax.swing.JPanel;
 	{
 		for (int i=0;i<28;i++)
 		{
-			ImageDomino vide = new ImageDomino( "imagesDominos/videGris.jpg"); 
+			ImageDomino vide = new ImageDomino( "src/imagesDominos/videGris.jpg"); 
 			dominosList.add(vide);
 		}
 	}
